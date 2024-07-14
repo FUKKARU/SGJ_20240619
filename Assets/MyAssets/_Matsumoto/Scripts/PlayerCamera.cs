@@ -3,52 +3,55 @@ using System.Collections.Generic;
 using SO;
 using UnityEngine;
 
-public class PlayerCamera : MonoBehaviour
+namespace Main
 {
-    [Header("í«è]ë¨ìx")]
-    [SerializeField] float trackSpeed;
-    Vector3 TallestItemPos = new Vector3(0, 0, 0);
-    Vector3 currentCameraPos = new Vector3(0, 0, 0);
-
-    SO_Tags tags;
-    void Awake()
+    public class PlayerCamera : MonoBehaviour
     {
-        tags = SO_Tags.Entity;
-        currentCameraPos = transform.position;
-    }
+        [Header("í«è]ë¨ìx")]
+        [SerializeField] float trackSpeed;
+        Vector3 TallestItemPos = new Vector3(0, 0, 0);
+        Vector3 currentCameraPos = new Vector3(0, 0, 0);
 
-    void Update()
-    {
-        // èÌÇ…í|Ç…í«è]
-        transform.position = Vector3.MoveTowards(transform.position, currentCameraPos, trackSpeed * Time.deltaTime);
-
-        // í«è]ç¿ïWÇíTçı
-        // CreateNewCameraPosition();
-    }
-
-    public void CreateNewCameraPosition()
-    {
-        GetTallestBambooPos();
-        currentCameraPos.x = TallestItemPos.x;
-        currentCameraPos.y = TallestItemPos.y;
-    }
-
-    void GetTallestBambooPos()
-    {
-        TallestItemPos.y = 0;//ïˆÇÍÇÈÇ©Ç‡ÇµÇÍÇ»Ç¢ÇÃÇ≈yç¿ïWÉ[ÉçÇ©ÇÁíTÇ∑
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag(tags.ItemTag))
+        SO_Tags tags;
+        void Awake()
         {
-            Item item = obj.GetComponent<Item>();
+            tags = SO_Tags.Entity;
+            currentCameraPos = transform.position;
+        }
 
-            // óéâ∫ÇµÇƒÇ¢Ç»Ç¢Å@Ç©Ç¬Å@ê⁄ínÇµÇƒÇ¢Ç»Ç¢ Ç»ÇÁ
-            if (!item.IsActive())
-            {
-                continue;
-            }
+        void Update()
+        {
+            // èÌÇ…í|Ç…í«è]
+            transform.position = Vector3.MoveTowards(transform.position, currentCameraPos, trackSpeed * Time.deltaTime);
 
-            if (TallestItemPos.y < item.transform.position.y)
+            // í«è]ç¿ïWÇíTçı
+            // CreateNewCameraPosition();
+        }
+
+        public void CreateNewCameraPosition()
+        {
+            GetTallestBambooPos();
+            currentCameraPos.x = TallestItemPos.x;
+            currentCameraPos.y = TallestItemPos.y;
+        }
+
+        void GetTallestBambooPos()
+        {
+            TallestItemPos.y = 0;//ïˆÇÍÇÈÇ©Ç‡ÇµÇÍÇ»Ç¢ÇÃÇ≈yç¿ïWÉ[ÉçÇ©ÇÁíTÇ∑
+            foreach (GameObject obj in GameObject.FindGameObjectsWithTag(tags.ItemTag))
             {
-                TallestItemPos.y = item.transform.position.y;
+                Item item = obj.GetComponent<Item>();
+
+                // óéâ∫ÇµÇƒÇ¢Ç»Ç¢Å@Ç©Ç¬Å@ê⁄ínÇµÇƒÇ¢Ç»Ç¢ Ç»ÇÁ
+                if (!item.IsActive())
+                {
+                    continue;
+                }
+
+                if (TallestItemPos.y < item.transform.position.y)
+                {
+                    TallestItemPos.y = item.transform.position.y;
+                }
             }
         }
     }
