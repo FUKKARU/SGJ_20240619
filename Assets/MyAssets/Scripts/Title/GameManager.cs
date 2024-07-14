@@ -23,6 +23,7 @@ namespace Title
         #endregion
 
         [Header("スプライト")]
-        //[Header("スタートボタン")] public Sprite[2] StartButton = new();
+        [Header("スタートボタン(通常/ホバー/クリック)")] public List<Sprite> StartButton = new();
+        [Header("ゲーム終了ボタン(通常/ホバー/クリック)")] public List<Sprite> QuitButton = new();
     }
 }
