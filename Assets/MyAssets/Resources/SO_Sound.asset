@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40574fd3a6dfa3047b48dab80bc13eb5, type: 3}
+  m_Name: SO_Sound
+  m_EditorClassIdentifier: 
+  ASPrefab: {fileID: 4175273600189399925, guid: cf5d829cd6b0c4f479b5f106d7053043,
+    type: 3}
+  AMGroupMaster: {fileID: 24300002, guid: b5aafbe88ae40a3418e1a39967e58d03, type: 2}
+  AMGroupBGM: {fileID: -5032583989990272255, guid: b5aafbe88ae40a3418e1a39967e58d03,
+    type: 2}
+  AMGroupSE: {fileID: 7383975542473094488, guid: b5aafbe88ae40a3418e1a39967e58d03,
+    type: 2}
+  TitleBGM: {fileID: 0}
+  ClickSE: {fileID: 0}
