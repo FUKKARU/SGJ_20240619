@@ -91,6 +91,42 @@ namespace IA
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftHold"",
+                    ""type"": ""Button"",
+                    ""id"": ""2d656ce2-12a9-4fa8-9663-be5bd3aa8020"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightHold"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3454b00-1871-46f0-a3ee-ee1a9f986cd2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DownHold"",
+                    ""type"": ""Button"",
+                    ""id"": ""bdf1139d-b045-4008-b8ce-b9d8400099e5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UpHold"",
+                    ""type"": ""Button"",
+                    ""id"": ""e9b3fc10-c6d6-423f-a4ba-b75b20014d78"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -335,6 +371,182 @@ namespace IA
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fae9eab9-1226-45c2-81bb-a3ade0a1bd41"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ba5c3a2-cd1e-402a-87d3-52b84d022379"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""780a58f3-9c93-4a18-a4ab-b780f0b20cbf"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""350425d5-6bc1-4a16-96a9-9e075e5d0c75"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cefcb8d4-95fe-4609-bbe2-5a6fdec5dd21"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80dca002-3243-47e8-9fb2-dfdc81f47b7a"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6c533da-09cb-4f08-9bc8-484f5aae5f46"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1157b7ab-5da4-4097-9f1b-5f51e48420e1"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d816697e-56f9-4643-b77b-9fa3fa6ecbc0"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c234c49d-83e6-4c80-9513-b0edb4a518b8"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d2b8c24-96d5-48fe-9f76-544bf096bafa"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6d7a67a-d93a-4baa-90c1-0f3d5962140c"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1afccb8b-4647-4e49-ab1d-b7b65e6ccabb"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db96049d-32cb-46b5-8ba8-cd1a19e27465"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60c5d93f-284a-4036-9816-195770c06bab"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0d5874d-4ac7-4d87-b89b-27f7805d4bb3"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -350,6 +562,10 @@ namespace IA
             m_Main_Down = m_Main.FindAction("Down", throwIfNotFound: true);
             m_Main_Up = m_Main.FindAction("Up", throwIfNotFound: true);
             m_Main_Pause = m_Main.FindAction("Pause", throwIfNotFound: true);
+            m_Main_LeftHold = m_Main.FindAction("LeftHold", throwIfNotFound: true);
+            m_Main_RightHold = m_Main.FindAction("RightHold", throwIfNotFound: true);
+            m_Main_DownHold = m_Main.FindAction("DownHold", throwIfNotFound: true);
+            m_Main_UpHold = m_Main.FindAction("UpHold", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -418,6 +634,10 @@ namespace IA
         private readonly InputAction m_Main_Down;
         private readonly InputAction m_Main_Up;
         private readonly InputAction m_Main_Pause;
+        private readonly InputAction m_Main_LeftHold;
+        private readonly InputAction m_Main_RightHold;
+        private readonly InputAction m_Main_DownHold;
+        private readonly InputAction m_Main_UpHold;
         public struct MainActions
         {
             private @IA m_Wrapper;
@@ -429,6 +649,10 @@ namespace IA
             public InputAction @Down => m_Wrapper.m_Main_Down;
             public InputAction @Up => m_Wrapper.m_Main_Up;
             public InputAction @Pause => m_Wrapper.m_Main_Pause;
+            public InputAction @LeftHold => m_Wrapper.m_Main_LeftHold;
+            public InputAction @RightHold => m_Wrapper.m_Main_RightHold;
+            public InputAction @DownHold => m_Wrapper.m_Main_DownHold;
+            public InputAction @UpHold => m_Wrapper.m_Main_UpHold;
             public InputActionMap Get() { return m_Wrapper.m_Main; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -459,6 +683,18 @@ namespace IA
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @LeftHold.started += instance.OnLeftHold;
+                @LeftHold.performed += instance.OnLeftHold;
+                @LeftHold.canceled += instance.OnLeftHold;
+                @RightHold.started += instance.OnRightHold;
+                @RightHold.performed += instance.OnRightHold;
+                @RightHold.canceled += instance.OnRightHold;
+                @DownHold.started += instance.OnDownHold;
+                @DownHold.performed += instance.OnDownHold;
+                @DownHold.canceled += instance.OnDownHold;
+                @UpHold.started += instance.OnUpHold;
+                @UpHold.performed += instance.OnUpHold;
+                @UpHold.canceled += instance.OnUpHold;
             }
 
             private void UnregisterCallbacks(IMainActions instance)
@@ -484,6 +720,18 @@ namespace IA
                 @Pause.started -= instance.OnPause;
                 @Pause.performed -= instance.OnPause;
                 @Pause.canceled -= instance.OnPause;
+                @LeftHold.started -= instance.OnLeftHold;
+                @LeftHold.performed -= instance.OnLeftHold;
+                @LeftHold.canceled -= instance.OnLeftHold;
+                @RightHold.started -= instance.OnRightHold;
+                @RightHold.performed -= instance.OnRightHold;
+                @RightHold.canceled -= instance.OnRightHold;
+                @DownHold.started -= instance.OnDownHold;
+                @DownHold.performed -= instance.OnDownHold;
+                @DownHold.canceled -= instance.OnDownHold;
+                @UpHold.started -= instance.OnUpHold;
+                @UpHold.performed -= instance.OnUpHold;
+                @UpHold.canceled -= instance.OnUpHold;
             }
 
             public void RemoveCallbacks(IMainActions instance)
@@ -510,6 +758,10 @@ namespace IA
             void OnDown(InputAction.CallbackContext context);
             void OnUp(InputAction.CallbackContext context);
             void OnPause(InputAction.CallbackContext context);
+            void OnLeftHold(InputAction.CallbackContext context);
+            void OnRightHold(InputAction.CallbackContext context);
+            void OnDownHold(InputAction.CallbackContext context);
+            void OnUpHold(InputAction.CallbackContext context);
         }
     }
 }

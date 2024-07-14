@@ -51,6 +51,10 @@ namespace IA
         public bool Main_IsRight { get; private set; } = false;
         public bool Main_IsDown { get; private set; } = false;
         public bool Main_IsUp { get; private set; } = false;
+        public bool Main_IsLeftHold { get; private set; } = false;
+        public bool Main_IsRightHold { get; private set; } = false;
+        public bool Main_IsDownHold { get; private set; } = false;
+        public bool Main_IsUpHold { get; private set; } = false;
         public bool Main_IsPause { get; private set; } = false;
         #endregion
 
@@ -78,6 +82,14 @@ namespace IA
                 _inputs.Main.Right.performed += Main_OnRight;
                 _inputs.Main.Down.performed += Main_OnDown;
                 _inputs.Main.Up.performed += Main_OnUp;
+                _inputs.Main.LeftHold.performed += Main_OnLeftDown;
+                _inputs.Main.RightHold.performed += Main_OnRightDown;
+                _inputs.Main.DownHold.performed += Main_OnDownDown;
+                _inputs.Main.UpHold.performed += Main_OnUpDown;
+                _inputs.Main.LeftHold.canceled += Main_OnLeftUp;
+                _inputs.Main.RightHold.canceled += Main_OnRightUp;
+                _inputs.Main.DownHold.canceled += Main_OnDownUp;
+                _inputs.Main.UpHold.canceled += Main_OnUpUp;
                 _inputs.Main.Pause.performed += Main_OnPause;
             }
             else
@@ -88,6 +100,14 @@ namespace IA
                 _inputs.Main.Right.performed -= Main_OnRight;
                 _inputs.Main.Down.performed -= Main_OnDown;
                 _inputs.Main.Up.performed -= Main_OnUp;
+                _inputs.Main.LeftHold.performed -= Main_OnLeftDown;
+                _inputs.Main.RightHold.performed -= Main_OnRightDown;
+                _inputs.Main.DownHold.performed -= Main_OnDownDown;
+                _inputs.Main.UpHold.performed -= Main_OnUpDown;
+                _inputs.Main.LeftHold.canceled -= Main_OnLeftUp;
+                _inputs.Main.RightHold.canceled -= Main_OnRightUp;
+                _inputs.Main.DownHold.canceled -= Main_OnDownUp;
+                _inputs.Main.UpHold.canceled -= Main_OnUpUp;
                 _inputs.Main.Pause.performed -= Main_OnPause;
             }
         }
@@ -100,6 +120,14 @@ namespace IA
         void Main_OnRight(InputAction.CallbackContext context) { Main_IsRight = true; }
         void Main_OnDown(InputAction.CallbackContext context) { Main_IsDown = true; }
         void Main_OnUp(InputAction.CallbackContext context) { Main_IsUp = true; }
+        void Main_OnLeftDown(InputAction.CallbackContext context) { Main_IsLeftHold = true; }
+        void Main_OnRightDown(InputAction.CallbackContext context) { Main_IsRightHold = true; }
+        void Main_OnDownDown(InputAction.CallbackContext context) { Main_IsDownHold = true; }
+        void Main_OnUpDown(InputAction.CallbackContext context) { Main_IsUpHold = true; }
+        void Main_OnLeftUp(InputAction.CallbackContext context) { Main_IsLeftHold = false; }
+        void Main_OnRightUp(InputAction.CallbackContext context) { Main_IsRightHold = false; }
+        void Main_OnDownUp(InputAction.CallbackContext context) { Main_IsDownHold = false; }
+        void Main_OnUpUp(InputAction.CallbackContext context) { Main_IsUpHold = false; }
         void Main_OnPause(InputAction.CallbackContext context) { Main_IsPause = true; }
         #endregion
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IA;
 
 public class Player : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] float putSpan;
     [Header("落ち物プレファブ")]
     [SerializeField] Item[] itemPrefab = new Item[3];
-    
+
     float putTimer;
     Camera cam;
     Item currentItem;
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
         }
 
         // 移動
-        float inputX = Input.GetAxisRaw("Horizontal");
+        float inputX = (InputGetter.Instance.Main_IsRightHold ? 1 : 0) + (InputGetter.Instance.Main_IsLeftHold ? -1 : 0);
         transform.position += Vector3.right * inputX * moveSpeed * Time.deltaTime;
 
         // 追従
@@ -73,7 +74,7 @@ public class Player : MonoBehaviour
     // 置ける状態かチェック
     private bool CanPut()
     {
-        return (Input.GetKeyDown(KeyCode.Mouse0) // 入力しているか
+        return (InputGetter.Instance.Main_IsSubmit // 入力しているか
             && putTimer >= putSpan               // 前の設置から時間が経過したか（連続では置けない）
             && currentItem != null);             // 落ち物はセットされているか
     }
