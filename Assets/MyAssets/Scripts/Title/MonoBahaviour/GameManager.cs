@@ -125,7 +125,7 @@ namespace Title
 
                 #endregion
 
-                #region 【3】最後にプレイヤーのボタン操作を受け付け、適切な処理を行う。
+                #region 【3】最後にプレイヤーのボタンクリックを受け付け、適切な処理を行う。
 
                 // case : ボタンが選択されていない場合
                 if (buttonSelecting == ButtonIndex.None)
