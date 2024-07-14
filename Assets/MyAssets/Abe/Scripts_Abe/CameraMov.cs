@@ -1,3 +1,4 @@
+using SO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,12 @@ using UnityEngine;
 public class CameraMov : MonoBehaviour//ƒJƒƒ‰‚É‚Â‚¯‚Ä‚Ë
 {
     Vector3 TallestBambooPos = new Vector3 (0, 0, 0);
+
+    SO_Tags tags;
+    void Awake()
+    {
+        tags = SO_Tags.Entity;
+    }
 
     void Update()
     {
@@ -23,7 +30,7 @@ public class CameraMov : MonoBehaviour//ƒJƒƒ‰‚É‚Â‚¯‚Ä‚Ë
     void GetTallestBambooPos()
     {
         TallestBambooPos.y = 0;//•ö‚ê‚é‚©‚à‚µ‚ê‚È‚¢‚Ì‚ÅyÀ•Wƒ[ƒ‚©‚ç’T‚·
-        foreach (GameObject bamboo in GameObject.FindGameObjectsWithTag("Bamboo"))
+        foreach (GameObject bamboo in GameObject.FindGameObjectsWithTag(tags.BambooTag))
         {
             if(TallestBambooPos.y < bamboo.transform.position.y)
             {
