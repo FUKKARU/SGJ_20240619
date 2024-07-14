@@ -15,10 +15,11 @@ public class CameraMov : MonoBehaviour//ƒJƒƒ‰‚É‚Â‚¯‚Ä‚Ë
 
     void Update()
     {
-        CreateNewCameraPosition();
+        // í‚É’|‚É’Ç]
+        // CreateNewCameraPosition();
     }
 
-    void CreateNewCameraPosition()
+    public void CreateNewCameraPosition()
     {
         GetTallestBambooPos();
         Vector3 currentCameraPos = gameObject.transform.position;
