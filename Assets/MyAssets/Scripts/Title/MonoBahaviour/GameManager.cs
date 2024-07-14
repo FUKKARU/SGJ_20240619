@@ -1,9 +1,13 @@
+using Cysharp.Threading.Tasks;
+using System;
+using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using IA;
 using UnityEngine.SceneManagement;
+using IA;
 using SO;
+using Title.SO;
 
 namespace Title
 {
@@ -44,8 +48,14 @@ namespace Title
         // trueなら、一切のボタン入力を受け付けない
         private bool _buttonClicked = false;
 
+        // UniTaskのキャンセラレーショントークン(このゲームオブジェクトが破棄された際に停止する)
+        private CancellationToken _ct;
+
         private void Start()
         {
+            // キャンセラレーショントークンの設定
+            _ct = this.GetCancellationTokenOnDestroy();
+
             // ボタンに初期スプライトをセット
             StartButton.sprite = StartButtonSprites[ButtonState.Normal];
             QuitButton.sprite = QuitButtonSprites[ButtonState.Normal];
@@ -131,8 +141,11 @@ namespace Title
                         // このフレームの後、一切の入力を受け付けない
                         _buttonClicked = true;
 
+                        // スプライトを更新(これ以降、ボタンのスプライトの更新は一切行われない想定)
+                        StartButton.sprite = StartButtonSprites[ButtonState.Click];
+
                         // メインシーンに遷移
-                        SceneChange(SO_SceneName.Entity.Main);
+                        SceneChange(SO_SceneName.Entity.Main, false, _ct).Forget();
                     }
                 }
                 // case : ゲーム終了ボタンが選択されている場合
@@ -144,13 +157,16 @@ namespace Title
                         // このフレームの後、一切の入力を受け付けない
                         _buttonClicked = true;
 
-                        // げーむ終了！
-                        QuitGame();
+                        // スプライトを更新(これ以降、ボタンのスプライトの更新は一切行われない想定)
+                        QuitButton.sprite = QuitButtonSprites[ButtonState.Click];
+
+                        // ゲーム終了！
+                        QuitGame(_ct).Forget();
                     }
                 }
                 else
                 {
-                    throw new System.Exception("無効なインデックス番号です");
+                    throw new Exception("無効なインデックス番号です");
                 }
 
                 #endregion
@@ -163,8 +179,10 @@ namespace Title
         }
 
         // シーン遷移
-        void SceneChange(string toSceneName, bool isAsync = false)
+        async UniTask SceneChange(string toSceneName, bool isAsync, CancellationToken ct)
         {
+            await UniTask.Delay(TimeSpan.FromSeconds(SO_Title.Entity.OnButtonClickWaitDur));
+
             // 非同期遷移
             if (isAsync)
             {
@@ -178,8 +196,10 @@ namespace Title
         }
 
         // ゲーム終了
-        void QuitGame()
+        async UniTask QuitGame(CancellationToken ct)
         {
+            await UniTask.Delay(TimeSpan.FromSeconds(SO_Title.Entity.OnButtonClickWaitDur));
+
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
