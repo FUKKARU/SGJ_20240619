@@ -640,6 +640,7 @@ MonoBehaviour:
   reachedmaxHeightText: {fileID: 1290976094}
   gameOverText: {fileID: 49760428}
   gameClearText: {fileID: 2138439320}
+  stagePos: {fileID: 1645451226}
 --- !u!4 &508395771
 Transform:
   m_ObjectHideFlags: 0
