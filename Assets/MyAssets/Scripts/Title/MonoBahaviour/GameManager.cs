@@ -71,8 +71,8 @@ namespace Title
                 // case : ボタンが選択されていない場合
                 if (_buttonSelecting == ButtonIndex.None)
                 {
-                    // 上下キーのどちらを押しても、スタートボタンを選択した状態にする。
-                    if (InputGetter.Instance.Main_IsDown || InputGetter.Instance.Main_IsUp)
+                    // 左右キーのどちらを押しても、スタートボタンを選択した状態にする。
+                    if (InputGetter.Instance.Main_IsLeft || InputGetter.Instance.Main_IsRight)
                     {
                         _buttonSelecting = ButtonIndex.Start;
                     }
@@ -80,8 +80,8 @@ namespace Title
                 // case : スタートボタンが押されている場合
                 else if (_buttonSelecting == ButtonIndex.Start)
                 {
-                    // 上下キーのどちらを押しても、ゲーム終了ボタンを選択した状態にする。
-                    if (InputGetter.Instance.Main_IsDown || InputGetter.Instance.Main_IsUp)
+                    // 左右キーのどちらを押しても、ゲーム終了ボタンを選択した状態にする。
+                    if (InputGetter.Instance.Main_IsLeft || InputGetter.Instance.Main_IsRight)
                     {
                         _buttonSelecting = ButtonIndex.Quit;
                     }
@@ -89,8 +89,8 @@ namespace Title
                 // case : ゲーム終了ボタンが押されている場合
                 else if (_buttonSelecting == ButtonIndex.Quit)
                 {
-                    // 上下キーのどちらを押しても、スタートボタンを選択した状態にする。
-                    if (InputGetter.Instance.Main_IsDown || InputGetter.Instance.Main_IsUp)
+                    // 左右キーのどちらを押しても、スタートボタンを選択した状態にする。
+                    if (InputGetter.Instance.Main_IsLeft || InputGetter.Instance.Main_IsRight)
                     {
                         _buttonSelecting = ButtonIndex.Start;
                     }
