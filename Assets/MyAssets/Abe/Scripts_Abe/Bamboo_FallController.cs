@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FujisanMov : MonoBehaviour
+public class Bamboo_FallController : MonoBehaviour
 {
+    public bool collisionWithMtFuji = false;
+
     SO_Tags tags;
     void Awake()
     {
@@ -14,9 +16,8 @@ public class FujisanMov : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject hitO = collision.gameObject;
-        if(hitO.tag == tags.BambooTag)
+        if (hitO.tag == tags.BambooTag && collisionWithMtFuji)
         {
-            hitO.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             hitO.GetComponent<Bamboo_FallController>().collisionWithMtFuji = true;
 
         }
