@@ -45,15 +45,25 @@ namespace IA
         #endregion
 
         #region
-        public bool Map_IsAction { get; private set; } = false;
-
-        public Vector2 Map_ValueAction { get; private set; } = Vector2.zero;
+        public bool Main_IsSubmit { get; private set; } = false;
+        public bool Main_IsCancel { get; private set; } = false;
+        public bool Main_IsLeft { get; private set; } = false;
+        public bool Main_IsRight { get; private set; } = false;
+        public bool Main_IsDown { get; private set; } = false;
+        public bool Main_IsUp { get; private set; } = false;
+        public bool Main_IsPause { get; private set; } = false;
         #endregion
 
         #region
         void LateUpdate()
         {
-            if (Map_IsAction) Map_IsAction = false;
+            if (Main_IsSubmit) Main_IsSubmit = false;
+            if (Main_IsCancel) Main_IsCancel = false;
+            if (Main_IsLeft) Main_IsLeft = false;
+            if (Main_IsRight) Main_IsRight = false;
+            if (Main_IsDown) Main_IsDown = false;
+            if (Main_IsUp) Main_IsUp = false;
+            if (Main_IsPause) Main_IsPause = false;
         }
         #endregion
 
@@ -62,28 +72,35 @@ namespace IA
         {
             if (isLink)
             {
-                _inputs.Main.Click.performed += Map_OnAction;
-
-                _inputs.Main.Stick.started += Map_ReadAction;
-                _inputs.Main.Stick.performed += Map_ReadAction;
-                _inputs.Main.Stick.canceled += Map_ReadAction;
-
+                _inputs.Main.Submit.performed += Main_OnSubmit;
+                _inputs.Main.Cancel.performed += Main_OnCancel;
+                _inputs.Main.Left.performed += Main_OnLeft;
+                _inputs.Main.Right.performed += Main_OnRight;
+                _inputs.Main.Down.performed += Main_OnDown;
+                _inputs.Main.Up.performed += Main_OnUp;
+                _inputs.Main.Pause.performed += Main_OnPause;
             }
             else
             {
-                _inputs.Main.Click.performed -= Map_OnAction;
-
-                _inputs.Main.Stick.started -= Map_ReadAction;
-                _inputs.Main.Stick.performed -= Map_ReadAction;
-                _inputs.Main.Stick.canceled -= Map_ReadAction;
+                _inputs.Main.Submit.performed -= Main_OnSubmit;
+                _inputs.Main.Cancel.performed -= Main_OnCancel;
+                _inputs.Main.Left.performed -= Main_OnLeft;
+                _inputs.Main.Right.performed -= Main_OnRight;
+                _inputs.Main.Down.performed -= Main_OnDown;
+                _inputs.Main.Up.performed -= Main_OnUp;
+                _inputs.Main.Pause.performed -= Main_OnPause;
             }
         }
         #endregion
 
         #region
-        void Map_OnAction(InputAction.CallbackContext context) { Map_IsAction = true; }
-
-        void Map_ReadAction(InputAction.CallbackContext context) { Map_ValueAction = context.ReadValue<Vector2>(); }
+        void Main_OnSubmit(InputAction.CallbackContext context) { Main_IsSubmit = true; }
+        void Main_OnCancel(InputAction.CallbackContext context) { Main_IsCancel = true; }
+        void Main_OnLeft(InputAction.CallbackContext context) { Main_IsLeft = true; }
+        void Main_OnRight(InputAction.CallbackContext context) { Main_IsRight = true; }
+        void Main_OnDown(InputAction.CallbackContext context) { Main_IsDown = true; }
+        void Main_OnUp(InputAction.CallbackContext context) { Main_IsUp = true; }
+        void Main_OnPause(InputAction.CallbackContext context) { Main_IsPause = true; }
         #endregion
     }
 }
