@@ -3,79 +3,91 @@ using System.Collections.Generic;
 using UnityEngine;
 using IA;
 
-public class Player : MonoBehaviour
+namespace Main
 {
-    // ランダムで落ち物が出てくる
-    // 落とす前に表示させる
-    // 5秒経ったら勝手に落ちる
-    [Header("移動速度")]
-    [SerializeField] float moveSpeed;
-    [Header("カメラからのオフセット")]
-    [SerializeField] float offsetY;
-    [Header("置くスパン")]
-    [SerializeField] float putSpan;
-    [Header("落ち物プレファブ")]
-    [SerializeField] Item[] itemPrefab = new Item[3];
-
-    float putTimer;
-    Camera cam;
-    Item currentItem;
-
-    private void Start()
+    public class Player : MonoBehaviour
     {
-        // メインカメラ取得
-        cam = Camera.main;
+        // ランダムで落ち物が出てくる
+        // 落とす前に表示させる
+        // 5秒経ったら勝手に落ちる
+        [Header("移動速度")]
+        [SerializeField] float moveSpeed;
+        [Header("カメラからのオフセット")]
+        [SerializeField] float offsetY;
+        [Header("置くスパン")]
+        [SerializeField] float putSpan;
+        [Header("落ち物プレファブ")]
+        [SerializeField] Item[] itemPrefab = new Item[3];
 
-        putTimer = 0;
-    }
+        float putTimer;
+        Camera cam;
+        Item currentItem;
 
-    private void Update()
-    {
-        // 落ち物をセット
-        if (currentItem == null)
+        private void Start()
         {
-            SetItem();
+            // メインカメラ取得
+            cam = Camera.main;
+
+            putTimer = 0;
+        }
+
+        private void Update()
+        {
+            // もしプレイヤーのターンならば...
+            if (GameManager.Instance.IsPlayerTurn)
+            {
+                // 落ち物をセット
+                if (currentItem == null)
+                {
+                    SetItem();
+                }
+
+                // 落ち物を置く
+                if (CanPut())
+                {
+                    putTimer = 0;
+                    PutItem();
+                }
+                else
+                {
+                    putTimer += Time.deltaTime;
+                }
+
+                // 移動
+                float inputX = (InputGetter.Instance.Main_IsRightHold ? 1 : 0) + (InputGetter.Instance.Main_IsLeftHold ? -1 : 0);
+                transform.position += Vector3.right * inputX * moveSpeed * Time.deltaTime;
+
+                // 追従
+                transform.position = new Vector3(transform.position.x, cam.transform.position.y + offsetY, transform.position.z); // yは（カメラの位置) + (オフセット)
+            }
+            // もし敵のターンならば...
+            else
+            {
+                // 未実装
+            }
+        }
+
+        // 落ち物をセット
+        private void SetItem()
+        {
+            int r = Random.Range(0, 3);
+            currentItem = Instantiate(itemPrefab[r], transform.position, Quaternion.identity);
+            currentItem.transform.SetParent(transform);
         }
 
         // 落ち物を置く
-        if (CanPut())
+        private void PutItem()
         {
-            putTimer = 0;
-            PutItem();
-        }
-        else
-        {
-            putTimer += Time.deltaTime;
+            currentItem.Set();
+            currentItem = null;
         }
 
-        // 移動
-        float inputX = (InputGetter.Instance.Main_IsRightHold ? 1 : 0) + (InputGetter.Instance.Main_IsLeftHold ? -1 : 0);
-        transform.position += Vector3.right * inputX * moveSpeed * Time.deltaTime;
-
-        // 追従
-        transform.position = new Vector3(transform.position.x, cam.transform.position.y + offsetY, transform.position.z); // yは（カメラの位置) + (オフセット)
-    }
-
-    // 落ち物をセット
-    private void SetItem()
-    {
-        int r = Random.Range(0, 3);
-        currentItem = Instantiate(itemPrefab[r], transform.position, Quaternion.identity);
-        currentItem.transform.SetParent(transform);
-    }
-
-    // 落ち物を置く
-    private void PutItem()
-    {
-        currentItem.Set();
-        currentItem = null;
-    }
-
-    // 置ける状態かチェック
-    private bool CanPut()
-    {
-        return (InputGetter.Instance.Main_IsSubmit // 入力しているか
-            && putTimer >= putSpan               // 前の設置から時間が経過したか（連続では置けない）
-            && currentItem != null);             // 落ち物はセットされているか
+        // 置ける状態かチェック
+        private bool CanPut()
+        {
+            return (InputGetter.Instance.Main_IsSubmit // 入力しているか
+                && putTimer >= putSpan               // 前の設置から時間が経過したか（連続では置けない）
+                && currentItem != null);             // 落ち物はセットされているか
+        }
     }
 }
