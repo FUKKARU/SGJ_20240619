@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.U2D.Aseprite;
@@ -12,7 +13,7 @@ public class Item : MonoBehaviour
     [SerializeField] float dragValue;
 
     bool isFall;
-    bool isGround;
+    [NonSerialized] public bool isGround;
     Rigidbody2D rb;
     Collider2D col;
 

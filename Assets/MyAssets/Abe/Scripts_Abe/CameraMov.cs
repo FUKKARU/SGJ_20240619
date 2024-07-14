@@ -31,7 +31,7 @@ public class CameraMov : MonoBehaviour//ƒJƒƒ‰‚É‚Â‚¯‚Ä‚Ë
     void GetTallestBambooPos()
     {
         TallestBambooPos.y = 0;//•ö‚ê‚é‚©‚à‚µ‚ê‚È‚¢‚Ì‚ÅyÀ•Wƒ[ƒ‚©‚ç’T‚·
-        foreach (GameObject bamboo in GameObject.FindGameObjectsWithTag(tags.BambooTag))
+        foreach (GameObject bamboo in GameObject.FindGameObjectsWithTag(tags.ItemTag))
         {
             if(TallestBambooPos.y < bamboo.transform.position.y && bamboo.GetComponent<Bamboo_FallController>().collisionWithMtFuji)
             {
