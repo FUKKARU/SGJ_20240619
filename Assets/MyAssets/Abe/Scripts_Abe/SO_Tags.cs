@@ -35,5 +35,9 @@ namespace SO
         [Header("’|")]
         [SerializeField] string bambooTag;
         public string BambooTag => bambooTag;
+
+        [Header("—‚¿•¨")]
+        [SerializeField] string itemTag;
+        public string ItemTag => itemTag;
     }
 }
