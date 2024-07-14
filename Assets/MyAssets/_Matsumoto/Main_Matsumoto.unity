@@ -270,7 +270,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d48b4b230a0604ab442254f61cefe4, type: 3}
+  m_Script: {fileID: 11500000, guid: ffbd1a3bbd0d628458ecc530424e0d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &410087039
@@ -515,7 +515,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
     type: 3}
-  m_Color: {r: 1, g: 0.987319, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.1398525, b: 0, a: 0.41568628}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -557,8 +557,10 @@ MonoBehaviour:
   moveSpeed: 1
   offsetY: 3
   putSpan: 0.5
-  bambooPrefab: {fileID: 7219370919740155480, guid: ee99111016cffc24f9e43f3dacc14696,
-    type: 3}
+  itemPrefab:
+  - {fileID: 6925820345037629969, guid: 45c01f4eeae8c6d448ff73a957679276, type: 3}
+  - {fileID: 8979865958349729512, guid: 3c6d41384794a1849b1561fa1b71b6bb, type: 3}
+  - {fileID: 2620234546952452907, guid: 92e953f19b180544aaf16fdbd6a47d7b, type: 3}
 --- !u!4 &1520145813
 Transform:
   m_ObjectHideFlags: 0
