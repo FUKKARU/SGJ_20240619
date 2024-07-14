@@ -5,27 +5,32 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
+    [Header("í«è]ë¨ìx")]
+    [SerializeField] float trackSpeed;
     Vector3 TallestItemPos = new Vector3(0, 0, 0);
+    Vector3 currentCameraPos = new Vector3(0, 0, 0);
 
     SO_Tags tags;
     void Awake()
     {
         tags = SO_Tags.Entity;
+        currentCameraPos = transform.position;
     }
 
     void Update()
     {
         // èÌÇ…í|Ç…í«è]
+        transform.position = Vector3.MoveTowards(transform.position, currentCameraPos, trackSpeed * Time.deltaTime);
+
+        // í«è]ç¿ïWÇíTçı
         // CreateNewCameraPosition();
     }
 
     public void CreateNewCameraPosition()
     {
         GetTallestBambooPos();
-        Vector3 currentCameraPos = gameObject.transform.position;
         currentCameraPos.x = TallestItemPos.x;
         currentCameraPos.y = TallestItemPos.y;
-        gameObject.transform.position = currentCameraPos;
     }
 
     void GetTallestBambooPos()
