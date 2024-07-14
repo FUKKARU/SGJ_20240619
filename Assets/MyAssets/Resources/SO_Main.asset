@@ -15,4 +15,5 @@ MonoBehaviour:
   MaxTurn: 100
   PlaceNumPerTurn: 20
   HoldLimit: 5
-  MaxHeight: 38
+  MaxHeight: 380000
+  OnButtonClickWaitDur: 0.5

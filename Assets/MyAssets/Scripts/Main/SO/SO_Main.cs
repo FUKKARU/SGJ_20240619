@@ -32,5 +32,7 @@ namespace Main.SO
         [Header("プレイヤーが、1ターンで何本設置できるか")] public int PlaceNumPerTurn;
         [Header("プレイヤーの保持している竹(など)が、\n何秒で強制的に落下するか")] public int HoldLimit;
         [Header("最大高度(ここまで詰めたらクリア)\n(単位は [km] )")] public int MaxHeight;
+
+        [Header("ボタンを押した後、何秒待つか")] public float OnButtonClickWaitDur;
     }
 }

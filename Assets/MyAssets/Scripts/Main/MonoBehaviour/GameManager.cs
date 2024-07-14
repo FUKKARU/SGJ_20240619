@@ -1,8 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Main.SO;
+using Cysharp.Threading.Tasks;
+using IA;
+using General;
+using SO;
+using System.Threading;
 
 namespace Main
 {
@@ -48,8 +52,17 @@ namespace Main
         private int _gameResult = Result.None;
         public int GameResult => _gameResult;
 
+        // UniTaskのキャンセラレーショントークン(このゲームオブジェクトが破棄された際に停止する)
+        private CancellationToken _ct;
+
+        private void Start()
+        {
+            // キャンセラレーショントークンの設定
+            _ct = this.GetCancellationTokenOnDestroy();
+        }
+
         // 両者が置き終わった後に、必ず呼ばれるべきメソッド(現在の高度を引数に入れること)
-        public void AfterPlace(int heightParam)
+        public async void AfterPlace(int heightParam)
         {
             // 【1】まず高度を更新し...
             height = heightParam;
@@ -59,8 +72,8 @@ namespace Main
             {
                 _gameResult = Result.Clear;
 
-                // クリアの処理
-
+                // クリアの処理を発火し、ここで処理終了
+                await Clear(turn);
                 return;
             }
 
@@ -72,13 +85,47 @@ namespace Main
             {
                 _gameResult = Result.Over;
 
-                // ゲームオーバーの処理
-
+                // ゲームオーバーの処理を発火し、ここで処理終了
+                await Over(height);
                 return;
             }
 
             // 【5】最後に相手のターンにする
             _isPlayerTurn = !_isPlayerTurn;
+        }
+
+        // クリアの処理(クリア時のターン数を引数に入れること)
+        async UniTask Clear(int turnParam)
+        {
+            // UI関連の処理(未実装)
+
+            // 一連の処理が終わった後、決定ボタンが押されたらタイトルに戻る
+            while (true)
+            {
+                if (InputGetter.Instance.Main_IsSubmit)
+                {
+                    await Flow.SceneChange(SO_SceneName.Entity.Title, false, SO_Main.Entity.OnButtonClickWaitDur, _ct);
+                }
+
+                await UniTask.Yield();
+            }
+        }
+
+        // ゲームオーバーの処理(ゲームオーバー時の高度を引数に入れること)
+        async UniTask Over(int heightParam)
+        {
+            // UI関連の処理(未実装)
+
+            // 一連の処理が終わった後、決定ボタンが押されたらタイトルに戻る
+            while (true)
+            {
+                if (InputGetter.Instance.Main_IsSubmit)
+                {
+                    await Flow.SceneChange(SO_SceneName.Entity.Title, false, SO_Main.Entity.OnButtonClickWaitDur, _ct);
+                }
+
+                await UniTask.Yield();
+            }
         }
     }
 

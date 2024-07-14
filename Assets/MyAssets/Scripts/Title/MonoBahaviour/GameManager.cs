@@ -4,9 +4,9 @@ using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using IA;
 using SO;
+using General;
 using Title.SO;
 
 namespace Title
@@ -120,7 +120,7 @@ namespace Title
                 }
                 else
                 {
-                    throw new System.Exception("無効なインデックス番号です");
+                    throw new Exception("無効なインデックス番号です");
                 }
 
                 #endregion
@@ -145,7 +145,9 @@ namespace Title
                         StartButton.sprite = StartButtonSprites[ButtonState.Click];
 
                         // メインシーンに遷移
-                        SceneChange(SO_SceneName.Entity.Main, false, _ct).Forget();
+                        Flow.SceneChange(
+                            SO_SceneName.Entity.Main, false, SO_Title.Entity.OnButtonClickWaitDur, _ct
+                            ).Forget();
                     }
                 }
                 // case : ゲーム終了ボタンが選択されている場合
@@ -161,7 +163,9 @@ namespace Title
                         QuitButton.sprite = QuitButtonSprites[ButtonState.Click];
 
                         // ゲーム終了！
-                        QuitGame(_ct).Forget();
+                        Flow.QuitGame(
+                            SO_Title.Entity.OnButtonClickWaitDur, _ct
+                            ).Forget();
                     }
                 }
                 else
@@ -176,35 +180,6 @@ namespace Title
             {
                 // 何もしない！
             }
-        }
-
-        // シーン遷移
-        async UniTask SceneChange(string toSceneName, bool isAsync, CancellationToken ct)
-        {
-            await UniTask.Delay(TimeSpan.FromSeconds(SO_Title.Entity.OnButtonClickWaitDur));
-
-            // 非同期遷移
-            if (isAsync)
-            {
-                // まだ未実装
-            }
-            // 即時遷移
-            else
-            {
-                SceneManager.LoadScene(toSceneName);
-            }
-        }
-
-        // ゲーム終了
-        async UniTask QuitGame(CancellationToken ct)
-        {
-            await UniTask.Delay(TimeSpan.FromSeconds(SO_Title.Entity.OnButtonClickWaitDur));
-
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
         }
     }
 
