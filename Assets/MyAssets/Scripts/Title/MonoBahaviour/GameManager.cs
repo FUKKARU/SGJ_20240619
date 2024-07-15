@@ -48,8 +48,8 @@ namespace Title
             set { _buttonSelecting = Mathf.Clamp(value, 0, 3); }
         }
 
-        // trueなら、一切のボタン入力を受け付けない
-        private bool _buttonClicked = false;
+        // trueなら、クレジットUIがアクティブであるので、一切のボタンの入力を受け付けない
+        private bool _isCreditUIActive = false;
 
         // UniTaskのキャンセラレーショントークン(このゲームオブジェクトが破棄された際に停止する)
         private CancellationToken _ct;
@@ -70,8 +70,8 @@ namespace Title
 
         private void Update()
         {
-            // ボタンがクリックされていないなら...
-            if (!_buttonClicked)
+            // クレジットUIが表示されていないなら...
+            if (!_isCreditUIActive)
             {
                 #region 【1】まず最初にボタンの選択状態を更新し... (プレイヤーの入力を受け付ける)
 
@@ -170,7 +170,7 @@ namespace Title
                     if (InputGetter.Instance.Main_IsSubmit)
                     {
                         // このフレームの後、一切の入力を受け付けない
-                        _buttonClicked = true;
+                        _isCreditUIActive = true;
 
                         // メインシーンに遷移
                         Flow.SceneChange(SO_SceneName.Entity.Main, false);
@@ -183,7 +183,7 @@ namespace Title
                     if (InputGetter.Instance.Main_IsSubmit)
                     {
                         // このフレームの後、一切の入力を受け付けない
-                        _buttonClicked = true;
+                        _isCreditUIActive = true;
 
                         // ゲーム終了！
                         Flow.QuitGame();
@@ -196,7 +196,7 @@ namespace Title
                     if (InputGetter.Instance.Main_IsSubmit)
                     {
                         // このフレームの後、一切の入力を受け付けない
-                        _buttonClicked = true;
+                        _isCreditUIActive = true;
 
                         // クレジットUIを表示する
                         CreditUI.SetActive(true);
@@ -209,10 +209,15 @@ namespace Title
 
                 #endregion
             }
-            // ボタンがクリックされているなら...
+            // クレジットUIが表示されているなら...
             else
             {
-                // 何もしない！
+                // 右クリックが押されたらUIを閉じる
+                if (InputGetter.Instance.Main_IsCancel)
+                {
+                    CreditUI.SetActive(false);
+                    _isCreditUIActive = false;
+                }
             }
         }
     }
