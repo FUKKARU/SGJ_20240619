@@ -21,7 +21,7 @@ namespace Main
         [SerializeField] GameObject gameOverObj;
         [SerializeField] Image rangeMap;
 
-        
+
         [NonSerialized] public bool isClear;
         [NonSerialized] public bool isOver;
         bool isChange;
@@ -40,8 +40,8 @@ namespace Main
             {
                 Destroy(gameObject);
             }
-            
-            
+
+
         }
         #endregion
 
@@ -73,7 +73,7 @@ namespace Main
         // UniTaskのキャンセラレーショントークン(このゲームオブジェクトが破棄された際に停止する)
         private CancellationToken _ct;
 
-        
+
 
         // 両者が置き終わった後に、必ず呼ばれるべきメソッド(現在の高度を引数に入れること)
         public async void AfterPlace(int heightParam)
@@ -168,7 +168,7 @@ namespace Main
                 var span = new TimeSpan(0, 0, (int)currentSeconds);
                 timeText.text = span.ToString(@"mm\:ss");
             }
-            
+
             if ((isClear || isOver) && !isChange) // 遷移
             {
                 isChange = true;
@@ -184,7 +184,30 @@ namespace Main
         private IEnumerator BackToTitle()
         {
             yield return new WaitForSeconds(5f);
-            Flow.SceneChange(SO_SceneName.Entity.Title, false);
+
+            const float DUR = 0.5f;
+            float t = 0;
+            while (true)
+            {
+                t += Time.deltaTime;
+
+                if (t > DUR)
+                {
+                    Color32 col = rangeMap.color;
+                    col.a = 255;
+                    rangeMap.color = col;
+
+                    Flow.SceneChange(SO_SceneName.Entity.Title, false);
+                }
+                else
+                {
+                    Color32 col = rangeMap.color;
+                    col.a = (byte)(t * 255 / DUR);
+                    rangeMap.color = col;
+                }
+
+                yield return null;
+            }
         }
 
         public void GameClear()
