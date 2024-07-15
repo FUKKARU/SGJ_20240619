@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7957396530466407248}
   - component: {fileID: 749574333485684785}
   - component: {fileID: 1297180019638668432}
+  - component: {fileID: -479192961262349789}
   m_Layer: 0
   m_Name: The_Emperor
   m_TagString: Item
@@ -229,3 +230,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-479192961262349789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7016985831022248365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e005d68678299854cac8375719abe303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
