@@ -22,7 +22,10 @@ namespace Main
         void Update()
         {
             // èÌÇ…í|Ç…í«è]
-            transform.position = Vector3.MoveTowards(transform.position, currentCameraPos, trackSpeed * Time.deltaTime);
+            if (currentCameraPos.y <= 28) // 28ÇÕåéÇÃç¿ïW-2
+            {
+                transform.position = Vector3.MoveTowards(transform.position, currentCameraPos, trackSpeed * Time.deltaTime);
+            }
 
             // í«è]ç¿ïWÇíTçı
             // CreateNewCameraPosition();
