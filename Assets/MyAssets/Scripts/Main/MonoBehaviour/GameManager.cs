@@ -162,7 +162,7 @@ namespace Main
 
         void Update()
         {
-            if (!isClear) // クリアしていないならタイマーをすすめる
+            if (!isClear && !isOver) // クリアまたはオーバーしていないならタイマーをすすめる
             {
                 currentSeconds -= Time.deltaTime;
                 var span = new TimeSpan(0, 0, (int)currentSeconds);
