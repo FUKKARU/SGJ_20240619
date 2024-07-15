@@ -16,9 +16,10 @@ namespace Main
 
         bool isFall;
         [NonSerialized] public bool isGround;
+        [NonSerialized] public int id;
         Rigidbody2D rb;
         Collider2D col;
-
+        
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -27,6 +28,7 @@ namespace Main
             // デフォルト重力off
             rb.gravityScale = 0;
             rb.drag = 0;
+            id = -1;
             col.enabled = false;
             isGround = false;
             isFall = false;
@@ -42,6 +44,11 @@ namespace Main
             else
             {
                 rb.drag = dragValue;
+            }
+
+            if (transform.position.y < -10)
+            {
+                Destroy(gameObject);
             }
         }
 

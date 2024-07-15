@@ -7,9 +7,6 @@ namespace Main
 {
     public class Player : MonoBehaviour
     {
-        // ランダムで落ち物が出てくる
-        // 落とす前に表示させる
-        // 5秒経ったら勝手に落ちる
         [Header("移動速度")]
         [SerializeField] float moveSpeed;
         [Header("カメラからのオフセット")]
@@ -70,9 +67,37 @@ namespace Main
         // 落ち物をセット
         private void SetItem()
         {
-            int r = Random.Range(0, itemPrefab.Length);
+            int r = Random.Range(0, 6);
+
+            // 前の落ち物がある場合
+            if (currentItem != null)
+            {
+                // 人の場合は被らないように
+                if (currentItem.id >= 8)
+                {
+                    r = Random.Range(0, 8);
+                }
+                else if (r > 0)
+                {
+                    r = Random.Range(0, 8);
+                }
+                else
+                {
+                    r = Random.Range(8, itemPrefab.Length);
+                }
+            }
+            else if (r > 0)
+            {
+                r = Random.Range(0, 8);
+            }
+            else
+            {
+                r = Random.Range(8, itemPrefab.Length);
+            }
+            
             currentItem = Instantiate(itemPrefab[r], transform.position, Quaternion.identity);
             currentItem.transform.SetParent(transform);
+            currentItem.id = r;
         }
 
         // 落ち物を置く
