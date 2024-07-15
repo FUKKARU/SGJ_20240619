@@ -70,7 +70,7 @@ namespace Main
         // —Ž‚¿•¨‚ðƒZƒbƒg
         private void SetItem()
         {
-            int r = Random.Range(0, 3);
+            int r = Random.Range(0, itemPrefab.Length);
             currentItem = Instantiate(itemPrefab[r], transform.position, Quaternion.identity);
             currentItem.transform.SetParent(transform);
         }
