@@ -38,6 +38,12 @@ namespace SO
         [Header("ƒQ[ƒ€“à")] public AudioClip MainBGM;
         [Space(50)]
         [Header("SE")]
-        [Header("tmp")] public int tmp;
+        [Header("–î‚ª”ò‚ñ‚Å‚­‚é")] public AudioClip ArrowSE;
+        [Header("è¦Î‚ª”ò‚ñ‚Å‚­‚é")] public AudioClip MeteoSE;
+        [Header("’|‚ª‰‚ß‚Ä‚Ô‚Â‚©‚Á‚½")] public AudioClip BambooSE;
+        [Header("’é‚ª‰‚ß‚Ä‚Ô‚Â‚©‚Á‚½")] public AudioClip MikadoSE;
+        [Header("‰¥‚ª‰‚ß‚Ä‚Ô‚Â‚©‚Á‚½")] public AudioClip OkinaSE;
+        [Header("›[‚ª‰‚ß‚Ä‚Ô‚Â‚©‚Á‚½")] public AudioClip OhnaSE;
+        [Header("ƒEƒTƒM‚ª‰‚ß‚Ä‚Ô‚Â‚©‚Á‚½")] public AudioClip RabbitSE;
     }
 }
