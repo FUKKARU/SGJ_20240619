@@ -22,7 +22,7 @@ namespace main
             {
                 Rigidbody2D hitObjRB = collision.gameObject.GetComponent<Rigidbody2D>();
                 hitObjRB.AddForce(myRB.velocity.normalized * power);
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
     }
