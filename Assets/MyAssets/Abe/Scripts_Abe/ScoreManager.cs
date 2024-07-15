@@ -28,7 +28,6 @@ namespace Main
 
         }
 
-        [ContextMenu("FunctionExecution")]
         void scoreShow()
         {
             reachedmaxHeightText.SetActive(true);

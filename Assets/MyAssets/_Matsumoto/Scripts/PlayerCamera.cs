@@ -8,7 +8,7 @@ namespace Main
     public class PlayerCamera : MonoBehaviour
     {
         [Header("í«è]ë¨ìx")]
-        [SerializeField] float trackSpeed;
+        [SerializeField] float trackSpeed = 1;
         Vector3 TallestItemPos = new Vector3(0, 0, 0);
         Vector3 currentCameraPos = new Vector3(0, 0, 0);
 
