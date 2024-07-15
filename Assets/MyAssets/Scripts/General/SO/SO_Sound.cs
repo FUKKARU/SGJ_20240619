@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -38,12 +39,12 @@ namespace SO
         [Header("ゲーム内")] public AudioClip MainBGM;
         [Space(50)]
         [Header("SE")]
-        [Header("矢が飛んでくる")] public AudioClip ArrowSE;
-        [Header("隕石が飛んでくる")] public AudioClip MeteoSE;
-        [Header("竹が初めてぶつかった")] public AudioClip BambooSE;
-        [Header("帝が初めてぶつかった")] public AudioClip MikadoSE;
-        [Header("翁が初めてぶつかった")] public AudioClip OkinaSE;
-        [Header("媼が初めてぶつかった")] public AudioClip OhnaSE;
-        [Header("ウサギが初めてぶつかった")] public AudioClip RabbitSE;
+        [Header("矢が飛んでくる(ランダム)")] public List<AudioClip> ArrowSE;
+        [Header("隕石が飛んでくる(ランダム)")] public List<AudioClip> MeteoSE;
+        [Header("竹が初めてぶつかった(ランダム)")] public List<AudioClip> BambooSE;
+        [Header("帝が初めてぶつかった(ランダム)")] public List<AudioClip> MikadoSE;
+        [Header("翁が初めてぶつかった(ランダム)")] public List<AudioClip> OkinaSE;
+        [Header("媼が初めてぶつかった(ランダム)")] public List<AudioClip> OhnaSE;
+        [Header("ウサギが初めてぶつかった(ランダム)")] public List<AudioClip> RabbitSE;
     }
 }
