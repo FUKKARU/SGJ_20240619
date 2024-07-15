@@ -100,7 +100,11 @@ namespace Main
         // 置ける状態かチェック
         private bool CanPut()
         {
+<<<<<<< Updated upstream
             return ((InputGetter.Instance.Main_IsSubmit || InputGetter.Instance.Main_IsSubmitHold) // 入力しているか
+=======
+            return ((InputGetter.Instance.Main_IsSubmit || InputGetter.Instance.Main_IsSubmit) // 入力しているか
+>>>>>>> Stashed changes
                 && putTimer >= putSpan               // 前の設置から時間が経過したか（連続では置けない）
                 && currentItem != null);             // 落ち物はセットされているか
         }
