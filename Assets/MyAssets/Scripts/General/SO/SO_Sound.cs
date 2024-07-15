@@ -45,6 +45,6 @@ namespace SO
         [Header("帝が初めてぶつかった(ランダム)")] public List<AudioClip> MikadoSE;
         [Header("翁が初めてぶつかった(ランダム)")] public List<AudioClip> OkinaSE;
         [Header("媼が初めてぶつかった(ランダム)")] public List<AudioClip> OhnaSE;
-        [Header("ウサギが初めてぶつかった(ランダム)")] public List<AudioClip> RabbitSE;
+        [Header("ウサギが飛んでくる(ランダム)")] public List<AudioClip> RabbitSE;
     }
 }

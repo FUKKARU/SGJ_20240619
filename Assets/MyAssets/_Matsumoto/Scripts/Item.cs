@@ -1,7 +1,8 @@
+using General;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Aseprite;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Main
@@ -16,19 +17,27 @@ namespace Main
 
         bool isFall;
         [NonSerialized] public bool isGround;
-        [NonSerialized] public int id;
+        [NonSerialized] public int id = -1;
         Rigidbody2D rb;
         Collider2D col;
-        
+
+        // 自身に付与したAudioSourceをキャッシュしておく
+        private AudioSource _source = null;
+
+        // 最初に接触した際にtrueになり、以降はfalseになることはない
+        private bool _isHit = false;
+
         private void Start()
         {
+            // AudioSourceを付与、キャッシュ
+            _source = gameObject.AddComponent<AudioSource>();
+
             rb = GetComponent<Rigidbody2D>();
             col = GetComponent<Collider2D>();
 
             // デフォルト重力off
             rb.gravityScale = 0;
             rb.drag = 0;
-            id = -1;
             col.enabled = false;
             isGround = false;
             isFall = false;
@@ -62,6 +71,14 @@ namespace Main
             }
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Line") && isGround)
+            {
+                GameManager.Instance.GameClear();
+            }
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             // 落ち物衝突
@@ -91,6 +108,15 @@ namespace Main
                 PlayerCamera playerCamera = Camera.main.GetComponent<PlayerCamera>();
                 playerCamera.CreateNewCameraPosition();
             }
+
+            if (!_isHit)
+            {
+                // これで、今後このスコープの処理は2度と呼ばれなくなる
+                _isHit = true;
+
+                // 最初に接触した際に、SEを再生
+                PlaySE();
+            }
         }
 
         // 落下させる
@@ -105,6 +131,30 @@ namespace Main
         public bool IsActive()
         {
             return isFall && isGround;
+        }
+
+        // このインスタンスの種類に応じたSEを再生する
+        private void PlaySE()
+        {
+            _source.Raise
+                (
+                    id switch
+                    {
+                        0 => CType.Bamboo.GetClip(),
+                        1 => CType.Bamboo.GetClip(),
+                        2 => CType.Bamboo.GetClip(),
+                        3 => CType.Bamboo.GetClip(),
+                        4 => CType.Bamboo.GetClip(),
+                        5 => CType.Bamboo.GetClip(),
+                        6 => CType.Bamboo.GetClip(),
+                        7 => CType.Bamboo.GetClip(),
+                        8 => CType.Okina.GetClip(),
+                        9 => CType.Mikado.GetClip(),
+                        10 => CType.Ohna.GetClip(),
+                        _ => throw new Exception("無効な種類です")
+                    }
+                    , SType.SE
+                );
         }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bamboo
   - Item
+  - Line
   layers:
   - Default
   - TransparentFX

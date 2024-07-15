@@ -87,8 +87,13 @@ namespace Title
                 // case : スタートボタンが押されている場合
                 else if (_buttonSelecting == ButtonIndex.Start)
                 {
+                    // 左キーを押すと、クレジットボタンを選択した状態にする
+                    if (InputGetter.Instance.Main_IsLeft)
+                    {
+                        _buttonSelecting = ButtonIndex.Credit;
+                    }
                     // 右キーを押すと、ゲーム終了ボタンを選択した状態にする
-                    if (InputGetter.Instance.Main_IsRight)
+                    else if (InputGetter.Instance.Main_IsRight)
                     {
                         _buttonSelecting = ButtonIndex.Quit;
                     }
@@ -114,6 +119,11 @@ namespace Title
                     if (InputGetter.Instance.Main_IsLeft)
                     {
                         _buttonSelecting = ButtonIndex.Quit;
+                    }
+                    // 右キーを押すと、スタートボタンを選択した状態にする
+                    else if (InputGetter.Instance.Main_IsRight)
+                    {
+                        _buttonSelecting = ButtonIndex.Start;
                     }
                 }
 
