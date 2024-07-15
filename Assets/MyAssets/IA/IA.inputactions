@@ -15,6 +15,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "SubmitHold",
+                    "type": "Button",
+                    "id": "24924144-5ae0-4be7-8c01-7a1773970e30",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Cancel",
                     "type": "Button",
                     "id": "9f9178e7-e7a6-451c-b648-a0a486f654c3",
@@ -521,6 +530,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "DownHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da6f8322-c386-4911-aeca-7f556939bf6a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SubmitHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b880f1a-d6e8-47cd-a110-39de24bc7169",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SubmitHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

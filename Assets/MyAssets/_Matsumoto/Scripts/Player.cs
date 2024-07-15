@@ -17,6 +17,7 @@ namespace Main
         [SerializeField] Item[] itemPrefab = new Item[3];
 
         float putTimer;
+        int previousID;
         Camera cam;
         Item currentItem;
 
@@ -30,63 +31,41 @@ namespace Main
 
         private void Update()
         {
-            // もしプレイヤーのターンならば...
-            if (GameManager.Instance.IsPlayerTurn)
+            // 落ち物をセット
+            if (currentItem == null)
             {
-                // 落ち物をセット
-                if (currentItem == null)
-                {
-                    SetItem();
-                }
-
-                // 落ち物を置く
-                if (CanPut())
-                {
-                    putTimer = 0;
-                    PutItem();
-                }
-                else
-                {
-                    putTimer += Time.deltaTime;
-                }
-
-                // 移動
-                float inputX = (InputGetter.Instance.Main_IsRightHold ? 1 : 0) + (InputGetter.Instance.Main_IsLeftHold ? -1 : 0);
-                transform.position += Vector3.right * inputX * moveSpeed * Time.deltaTime;
-
-                // 追従
-                transform.position = new Vector3(transform.position.x, cam.transform.position.y + offsetY, transform.position.z); // yは（カメラの位置) + (オフセット)
+                SetItem();
             }
-            // もし敵のターンならば...
+
+            // 落ち物を置く
+            if (CanPut())
+            {
+                putTimer = 0;
+                PutItem();
+            }
             else
             {
-                // 未実装
+                putTimer += Time.deltaTime;
             }
+
+            // 移動
+            float inputX = (InputGetter.Instance.Main_IsRightHold ? 1 : 0) + (InputGetter.Instance.Main_IsLeftHold ? -1 : 0);
+            if ((transform.position.x >= 10f && inputX > 0) || (transform.position.x <= -10f && inputX < 0))
+            {
+                inputX = 0;
+            }
+            transform.position += Vector3.right * inputX * moveSpeed * Time.deltaTime;
+
+            // 追従
+            transform.position = new Vector3(transform.position.x, cam.transform.position.y + offsetY, transform.position.z); // yは（カメラの位置) + (オフセット)
         }
 
         // 落ち物をセット
         private void SetItem()
         {
-            int r = Random.Range(0, 6);
-
-            // 前の落ち物がある場合
-            if (currentItem != null)
-            {
-                // 人の場合は被らないように
-                if (currentItem.id >= 8)
-                {
-                    r = Random.Range(0, 8);
-                }
-                else if (r > 0)
-                {
-                    r = Random.Range(0, 8);
-                }
-                else
-                {
-                    r = Random.Range(8, itemPrefab.Length);
-                }
-            }
-            else if (r > 0)
+            int r = Random.Range(0, 10);
+            
+            if (r > 0 || previousID >= 8)
             {
                 r = Random.Range(0, 8);
             }
@@ -98,6 +77,17 @@ namespace Main
             currentItem = Instantiate(itemPrefab[r], transform.position, Quaternion.identity);
             currentItem.transform.SetParent(transform);
             currentItem.id = r;
+            previousID = r;
+
+            // 人でないなら50%で反転
+            if (r < 8)
+            {
+                r = Random.Range(0, 2);
+                if (r == 0)
+                {
+                    currentItem.transform.localScale = new Vector3(-currentItem.transform.localScale.x, currentItem.transform.localScale.y, currentItem.transform.localScale.z);
+                }
+            }
         }
 
         // 落ち物を置く
