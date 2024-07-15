@@ -31,7 +31,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7006842c4bb9a4947a4bcbe63f45a7fd, type: 3}
   - {fileID: 8300000, guid: 712818a0366382a43b5afcfba34f29f8, type: 3}
   MikadoSE:
-  - {fileID: 8300000, guid: c2271bf60d41028468a63d47bb723e1e, type: 3}
   - {fileID: 8300000, guid: bfbbd683ce18f444d8a0ae974885516c, type: 3}
   OkinaSE:
   - {fileID: 8300000, guid: d7f08d6807ffaf548a64714c5130cbda, type: 3}
