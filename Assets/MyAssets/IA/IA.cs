@@ -39,6 +39,15 @@ namespace IA
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""SubmitHold"",
+                    ""type"": ""Button"",
+                    ""id"": ""24924144-5ae0-4be7-8c01-7a1773970e30"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""9f9178e7-e7a6-451c-b648-a0a486f654c3"",
@@ -547,6 +556,28 @@ namespace IA
                     ""action"": ""DownHold"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da6f8322-c386-4911-aeca-7f556939bf6a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SubmitHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b880f1a-d6e8-47cd-a110-39de24bc7169"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SubmitHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -556,6 +587,7 @@ namespace IA
             // Main
             m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
             m_Main_Submit = m_Main.FindAction("Submit", throwIfNotFound: true);
+            m_Main_SubmitHold = m_Main.FindAction("SubmitHold", throwIfNotFound: true);
             m_Main_Cancel = m_Main.FindAction("Cancel", throwIfNotFound: true);
             m_Main_Left = m_Main.FindAction("Left", throwIfNotFound: true);
             m_Main_Right = m_Main.FindAction("Right", throwIfNotFound: true);
@@ -628,6 +660,7 @@ namespace IA
         private readonly InputActionMap m_Main;
         private List<IMainActions> m_MainActionsCallbackInterfaces = new List<IMainActions>();
         private readonly InputAction m_Main_Submit;
+        private readonly InputAction m_Main_SubmitHold;
         private readonly InputAction m_Main_Cancel;
         private readonly InputAction m_Main_Left;
         private readonly InputAction m_Main_Right;
@@ -643,6 +676,7 @@ namespace IA
             private @IA m_Wrapper;
             public MainActions(@IA wrapper) { m_Wrapper = wrapper; }
             public InputAction @Submit => m_Wrapper.m_Main_Submit;
+            public InputAction @SubmitHold => m_Wrapper.m_Main_SubmitHold;
             public InputAction @Cancel => m_Wrapper.m_Main_Cancel;
             public InputAction @Left => m_Wrapper.m_Main_Left;
             public InputAction @Right => m_Wrapper.m_Main_Right;
@@ -665,6 +699,9 @@ namespace IA
                 @Submit.started += instance.OnSubmit;
                 @Submit.performed += instance.OnSubmit;
                 @Submit.canceled += instance.OnSubmit;
+                @SubmitHold.started += instance.OnSubmitHold;
+                @SubmitHold.performed += instance.OnSubmitHold;
+                @SubmitHold.canceled += instance.OnSubmitHold;
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
@@ -702,6 +739,9 @@ namespace IA
                 @Submit.started -= instance.OnSubmit;
                 @Submit.performed -= instance.OnSubmit;
                 @Submit.canceled -= instance.OnSubmit;
+                @SubmitHold.started -= instance.OnSubmitHold;
+                @SubmitHold.performed -= instance.OnSubmitHold;
+                @SubmitHold.canceled -= instance.OnSubmitHold;
                 @Cancel.started -= instance.OnCancel;
                 @Cancel.performed -= instance.OnCancel;
                 @Cancel.canceled -= instance.OnCancel;
@@ -752,6 +792,7 @@ namespace IA
         public interface IMainActions
         {
             void OnSubmit(InputAction.CallbackContext context);
+            void OnSubmitHold(InputAction.CallbackContext context);
             void OnCancel(InputAction.CallbackContext context);
             void OnLeft(InputAction.CallbackContext context);
             void OnRight(InputAction.CallbackContext context);

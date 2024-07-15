@@ -46,6 +46,7 @@ namespace IA
 
         #region
         public bool Main_IsSubmit { get; private set; } = false;
+        public bool Main_IsSubmitHold { get; private set; } = false;
         public bool Main_IsCancel { get; private set; } = false;
         public bool Main_IsLeft { get; private set; } = false;
         public bool Main_IsRight { get; private set; } = false;
@@ -77,6 +78,8 @@ namespace IA
             if (isLink)
             {
                 _inputs.Main.Submit.performed += Main_OnSubmit;
+                _inputs.Main.SubmitHold.performed += Main_OnSubmitDown;
+                _inputs.Main.SubmitHold.canceled += Main_OnSubmitUp;
                 _inputs.Main.Cancel.performed += Main_OnCancel;
                 _inputs.Main.Left.performed += Main_OnLeft;
                 _inputs.Main.Right.performed += Main_OnRight;
@@ -95,6 +98,8 @@ namespace IA
             else
             {
                 _inputs.Main.Submit.performed -= Main_OnSubmit;
+                _inputs.Main.SubmitHold.performed -= Main_OnSubmitDown;
+                _inputs.Main.SubmitHold.canceled -= Main_OnSubmitUp;
                 _inputs.Main.Cancel.performed -= Main_OnCancel;
                 _inputs.Main.Left.performed -= Main_OnLeft;
                 _inputs.Main.Right.performed -= Main_OnRight;
@@ -115,6 +120,8 @@ namespace IA
 
         #region
         void Main_OnSubmit(InputAction.CallbackContext context) { Main_IsSubmit = true; }
+        void Main_OnSubmitDown(InputAction.CallbackContext context) { Main_IsSubmitHold = true; }
+        void Main_OnSubmitUp(InputAction.CallbackContext context) { Main_IsSubmitHold = false; }
         void Main_OnCancel(InputAction.CallbackContext context) { Main_IsCancel = true; }
         void Main_OnLeft(InputAction.CallbackContext context) { Main_IsLeft = true; }
         void Main_OnRight(InputAction.CallbackContext context) { Main_IsRight = true; }
