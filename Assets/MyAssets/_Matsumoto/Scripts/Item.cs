@@ -26,10 +26,23 @@ namespace Main
 
             // デフォルト重力off
             rb.gravityScale = 0;
-            rb.drag = dragValue;
+            rb.drag = 0;
             col.enabled = false;
             isGround = false;
             isFall = false;
+        }
+
+        private void Update()
+        {
+            // 落下していないかつ接地していないなら
+            if (!IsActive())
+            {
+                rb.drag = 0;
+            }
+            else
+            {
+                rb.drag = dragValue;
+            }
         }
 
         private void FixedUpdate()

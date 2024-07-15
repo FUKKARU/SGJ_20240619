@@ -216,7 +216,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1932509943}
-  - {fileID: 1154276784}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
@@ -275,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbd1a3bbd0d628458ecc530424e0d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackSpeed: 1
+  trackSpeed: 2
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +530,7 @@ GameObject:
   - component: {fileID: 1154276784}
   - component: {fileID: 1154276785}
   m_Layer: 0
-  m_Name: Moon01
+  m_Name: Moon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -546,11 +545,11 @@ Transform:
   m_GameObject: {fileID: 1154276783}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8, y: 4, z: 10}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 330585546}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1154276785
 SpriteRenderer:
@@ -797,13 +796,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   offsetY: 3
-  putSpan: 0.5
+  putSpan: 1
   itemPrefab:
   - {fileID: 6925820345037629969, guid: 45c01f4eeae8c6d448ff73a957679276, type: 3}
   - {fileID: 8979865958349729512, guid: 3c6d41384794a1849b1561fa1b71b6bb, type: 3}
   - {fileID: 2620234546952452907, guid: 92e953f19b180544aaf16fdbd6a47d7b, type: 3}
   - {fileID: 1341954181043613431, guid: 9440090357e02d74f8d4a575c7761961, type: 3}
   - {fileID: 6080589529288887054, guid: 4304cdd2280608c49a81c39bf006fbb3, type: 3}
+  - {fileID: 1399952576288459577, guid: 9fd2b85944b51e74e8fc67409f954f86, type: 3}
+  - {fileID: 4363757129427936975, guid: 7eadc93411a2a134aac031e9d41db28d, type: 3}
+  - {fileID: 8402554385489389089, guid: 750623654b38b04498509046d9f71e9a, type: 3}
+  - {fileID: 910556011768488909, guid: 555abc33e528f994eb916cbfa4b6d2ed, type: 3}
+  - {fileID: 7957396530466407248, guid: 036bb9bb78fd14a4faad99ef0a5ff5d4, type: 3}
 --- !u!4 &1520145813
 Transform:
   m_ObjectHideFlags: 0
@@ -1027,7 +1031,7 @@ GameObject:
   - component: {fileID: 1932509943}
   - component: {fileID: 1932509942}
   m_Layer: 0
-  m_Name: 14a0d02f8262e34f
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1173,6 +1177,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 330585546}
+  - {fileID: 1154276784}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 4670166576974685729}

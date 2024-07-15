@@ -29,15 +29,21 @@ namespace SO
         }
         #endregion
 
-        [Header("生成するAudioSourceのプレハブ")] public GameObject ASPrefab;
         [Header("MasterのAudioMixerGroup")] public AudioMixerGroup AMGroupMaster;
         [Header("BGMのAudioMixerGroup")] public AudioMixerGroup AMGroupBGM;
         [Header("SEのAudioMixerGroup")] public AudioMixerGroup AMGroupSE;
         [Space(50)]
         [Header("BGM")]
         [Header("タイトル")] public AudioClip TitleBGM;
+        [Header("ゲーム内")] public AudioClip MainBGM;
         [Space(50)]
         [Header("SE")]
-        [Header("クリック")] public AudioClip ClickSE;
+        [Header("矢が飛んでくる")] public AudioClip ArrowSE;
+        [Header("隕石が飛んでくる")] public AudioClip MeteoSE;
+        [Header("竹が初めてぶつかった")] public AudioClip BambooSE;
+        [Header("帝が初めてぶつかった")] public AudioClip MikadoSE;
+        [Header("翁が初めてぶつかった")] public AudioClip OkinaSE;
+        [Header("媼が初めてぶつかった")] public AudioClip OhnaSE;
+        [Header("ウサギが初めてぶつかった")] public AudioClip RabbitSE;
     }
 }
