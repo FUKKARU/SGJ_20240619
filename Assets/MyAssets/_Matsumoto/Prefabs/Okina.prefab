@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 9.8
-  dragValue: 3
+  dragValue: 4
 --- !u!60 &257097020618369535
 PolygonCollider2D:
   m_ObjectHideFlags: 0
