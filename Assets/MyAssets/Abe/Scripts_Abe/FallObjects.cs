@@ -1,6 +1,6 @@
 using General;
 using SO;
-
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -38,7 +38,7 @@ namespace main
                         CType.Rabbit => General.CType.Rabbit.GetClip(),
                         CType.Arrow => General.CType.Arrow.GetClip(),
                         CType.Meteo => General.CType.Meteo.GetClip(),
-                        _ => throw new Exception("�����Ȏ�ނł�")
+                        _ => throw new Exception("無効な種類です。")
                     }
                     , SType.SE
                 );

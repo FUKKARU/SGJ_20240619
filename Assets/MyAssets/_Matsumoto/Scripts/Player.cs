@@ -63,7 +63,7 @@ namespace Main
         // —Ž‚¿•¨‚ðƒZƒbƒg
         private void SetItem()
         {
-            int r = Random.Range(0, 10);
+            int r = Random.Range(0, 4);
             
             if (r > 0 || previousID >= 8)
             {

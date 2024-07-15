@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Main.SO;
 using Cysharp.Threading.Tasks;
 using IA;
@@ -18,10 +19,12 @@ namespace Main
         [SerializeField] int countdownSeconds = 60;
         [SerializeField] GameObject gameClearObj;
         [SerializeField] GameObject gameOverObj;
+        [SerializeField] Image rangeMap;
 
         
         [NonSerialized] public bool isClear;
         [NonSerialized] public bool isOver;
+        bool isChange;
         float currentSeconds;
 
         #region
@@ -151,18 +154,37 @@ namespace Main
             // リザルト表示
             gameClearObj.SetActive(false);
             gameOverObj.SetActive(false);
+
+            isClear = false;
+            isOver = false;
+            isChange = false;
         }
 
         void Update()
         {
-            currentSeconds -= Time.deltaTime;
-            var span = new TimeSpan(0, 0, (int)currentSeconds);
-            timeText.text = span.ToString(@"mm\:ss");
+            if (!isClear) // クリアしていないならタイマーをすすめる
+            {
+                currentSeconds -= Time.deltaTime;
+                var span = new TimeSpan(0, 0, (int)currentSeconds);
+                timeText.text = span.ToString(@"mm\:ss");
+            }
+            
+            if ((isClear || isOver) && !isChange) // 遷移
+            {
+                isChange = true;
+                StartCoroutine(BackToTitle());
+            }
 
             if (currentSeconds <= 0) // 制限時間を超えている　かつ　クリアしていない
             {
                 GameOver();
             }
+        }
+
+        private IEnumerator BackToTitle()
+        {
+            yield return new WaitForSeconds(5f);
+            Flow.SceneChange(SO_SceneName.Entity.Title, false);
         }
 
         public void GameClear()
