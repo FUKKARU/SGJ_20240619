@@ -38,8 +38,8 @@ namespace main
                     cType switch
                     {
                         CType.Rabbit => General.CType.Rabbit.GetClip(),
-                        CType.Arrow => General.CType.Rabbit.GetClip(),
-                        CType.Meteo => General.CType.Rabbit.GetClip(),
+                        CType.Arrow => General.CType.Arrow.GetClip(),
+                        CType.Meteo => General.CType.Meteo.GetClip(),
                         _ => throw new Exception("–³Œø‚ÈŽí—Þ‚Å‚·")
                     }
                     , SType.SE
