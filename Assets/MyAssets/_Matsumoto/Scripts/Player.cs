@@ -52,7 +52,7 @@ namespace Main
 
             // ˆÚ“®
             float inputX = (InputGetter.Instance.Main_IsRightHold ? 1 : 0) + (InputGetter.Instance.Main_IsLeftHold ? -1 : 0);
-            if ((transform.position.x >= 10f && inputX > 0) || (transform.position.x <= -10f && inputX < 0))
+            if ((transform.position.x >= 8f && inputX > 0) || (transform.position.x <= -8f && inputX < 0))
             {
                 inputX = 0;
             }
