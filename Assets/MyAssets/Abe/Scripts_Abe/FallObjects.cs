@@ -10,7 +10,7 @@ namespace main
     {
         SO_Tags tags;
         Rigidbody2D myRB;
-        float power = 2;
+        float power = 1000;
         void Awake()
         {
             myRB = GetComponent<Rigidbody2D>();
@@ -21,7 +21,8 @@ namespace main
             if (collision.gameObject.tag == tags.ItemTag)
             {
                 Rigidbody2D hitObjRB = collision.gameObject.GetComponent<Rigidbody2D>();
-                hitObjRB.AddForce(myRB.velocity.normalized * power);
+                //hitObjRB.AddForce(myRB.velocity.normalized * power);
+                hitObjRB.AddForce(Random.insideUnitSphere* power);
                 //Destroy(gameObject);
             }
         }
