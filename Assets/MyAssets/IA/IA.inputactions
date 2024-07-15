@@ -161,6 +161,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f5ee51a0-3769-495b-b6a6-23e74b72d4da",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0275c82c-b448-4f0f-9c0d-3ebadc13b59f",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -174,6 +185,17 @@
                     "name": "",
                     "id": "3036f23f-3be4-4301-83e4-52dfaeeeee72",
                     "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9596bd1e-1fdd-48af-ab31-0e5ceb32a1c5",
+                    "path": "<Keyboard>/backspace",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -592,6 +614,17 @@
                     "name": "",
                     "id": "624a4e46-71a8-460e-b613-60aa156dd219",
                     "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SubmitHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6edd3e2-170d-47a5-ac62-693e31ba58fa",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
