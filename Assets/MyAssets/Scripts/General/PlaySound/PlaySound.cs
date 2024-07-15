@@ -6,7 +6,7 @@ namespace General
     public static class PlaySound
     {
         // —^‚¦‚ç‚ê‚½AudioSource‚ğ—p‚¢‚ÄABGM/SE‚ğÄ¶‚·‚é
-        public static void Play(this AudioSource source, AudioClip clip, bool sType, float volume = 1, float pitch = 1)
+        public static void Raise(this AudioSource source, AudioClip clip, bool sType, float volume = 1, float pitch = 1)
         {
             source.volume = volume;
             source.pitch = pitch;

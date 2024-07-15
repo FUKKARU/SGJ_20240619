@@ -19,5 +19,6 @@ MonoBehaviour:
     type: 2}
   AMGroupSE: {fileID: 7383975542473094488, guid: b5aafbe88ae40a3418e1a39967e58d03,
     type: 2}
-  TitleBGM: {fileID: 0}
+  TitleBGM: {fileID: 8300000, guid: 5475a7a8b605b934dbc7b46082332b18, type: 3}
+  MainBGM: {fileID: 8300000, guid: fb8446a51f5b05c44a64903bd15df4be, type: 3}
   ClickSE: {fileID: 0}
