@@ -13,6 +13,8 @@ namespace main
         [SerializeField] int countdownSeconds = 60;
 
         float currentSeconds;
+        bool isClear;
+        bool isOver;
         SO_Tags tags;
 
         void Awake()

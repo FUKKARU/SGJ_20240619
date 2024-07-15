@@ -71,6 +71,14 @@ namespace Main
             }
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Line") && isGround)
+            {
+                GameManager.Instance.GameClear();
+            }
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             // óéÇøï®è’ìÀ

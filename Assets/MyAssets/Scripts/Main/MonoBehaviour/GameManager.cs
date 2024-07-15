@@ -7,11 +7,23 @@ using IA;
 using General;
 using SO;
 using System.Threading;
+using System;
+using TMPro;
 
 namespace Main
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] TextMeshProUGUI timeText;
+        [SerializeField] int countdownSeconds = 60;
+        [SerializeField] GameObject gameClearObj;
+        [SerializeField] GameObject gameOverObj;
+
+        
+        [NonSerialized] public bool isClear;
+        [NonSerialized] public bool isOver;
+        float currentSeconds;
+
         #region
         public static GameManager Instance { get; set; } = null;
 
@@ -25,9 +37,12 @@ namespace Main
             {
                 Destroy(gameObject);
             }
+            
+            
         }
         #endregion
 
+        #region
         // 現在のターン数(0~)(最大ターン数に達したらゲームオーバー)
         private int _turn = 0;
         private int turn
@@ -55,11 +70,7 @@ namespace Main
         // UniTaskのキャンセラレーショントークン(このゲームオブジェクトが破棄された際に停止する)
         private CancellationToken _ct;
 
-        private void Start()
-        {
-            // キャンセラレーショントークンの設定
-            _ct = this.GetCancellationTokenOnDestroy();
-        }
+        
 
         // 両者が置き終わった後に、必ず呼ばれるべきメソッド(現在の高度を引数に入れること)
         public async void AfterPlace(int heightParam)
@@ -126,6 +137,54 @@ namespace Main
 
                 await UniTask.Yield();
             }
+        }
+        #endregion
+
+        private void Start()
+        {
+            // 時間初期設定
+            currentSeconds = countdownSeconds;
+
+            // キャンセラレーショントークンの設定
+            _ct = this.GetCancellationTokenOnDestroy();
+
+            // リザルト表示
+            gameClearObj.SetActive(false);
+            gameOverObj.SetActive(false);
+        }
+
+        void Update()
+        {
+            currentSeconds -= Time.deltaTime;
+            var span = new TimeSpan(0, 0, (int)currentSeconds);
+            timeText.text = span.ToString(@"mm\:ss");
+
+            if (currentSeconds <= 0) // 制限時間を超えている　かつ　クリアしていない
+            {
+                GameOver();
+            }
+        }
+
+        public void GameClear()
+        {
+            if (isClear || isOver)
+            {
+                return;
+            }
+
+            gameClearObj.SetActive(true);
+            isClear = true;
+        }
+
+        public void GameOver()
+        {
+            if (isOver || isClear)
+            {
+                return;
+            }
+
+            gameOverObj.SetActive(true);
+            isOver = true;
         }
     }
 
