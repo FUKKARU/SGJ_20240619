@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40574fd3a6dfa3047b48dab80bc13eb5, type: 3}
   m_Name: SO_Sound
   m_EditorClassIdentifier: 
-  ASPrefab: {fileID: 4175273600189399925, guid: cf5d829cd6b0c4f479b5f106d7053043,
-    type: 3}
   AMGroupMaster: {fileID: 24300002, guid: b5aafbe88ae40a3418e1a39967e58d03, type: 2}
   AMGroupBGM: {fileID: -5032583989990272255, guid: b5aafbe88ae40a3418e1a39967e58d03,
     type: 2}
@@ -21,4 +19,10 @@ MonoBehaviour:
     type: 2}
   TitleBGM: {fileID: 8300000, guid: 5475a7a8b605b934dbc7b46082332b18, type: 3}
   MainBGM: {fileID: 8300000, guid: fb8446a51f5b05c44a64903bd15df4be, type: 3}
-  ClickSE: {fileID: 0}
+  ArrowSE: {fileID: 8300000, guid: 3f793ef552045fa42a7dee30a8f53833, type: 3}
+  MeteoSE: {fileID: 8300000, guid: 9d4dc349a8ce84443b652074653373c4, type: 3}
+  BambooSE: {fileID: 0}
+  MikadoSE: {fileID: 0}
+  OkinaSE: {fileID: 0}
+  OhnaSE: {fileID: 0}
+  RabbitSE: {fileID: 0}
