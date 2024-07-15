@@ -27,7 +27,5 @@ namespace Title.SO
             }
         }
         #endregion
-
-        [Header("ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½ŒãA‰½•b‘Ò‚Â‚©")] public float OnButtonClickWaitDur;
     }
 }

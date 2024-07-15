@@ -7,11 +7,9 @@ namespace General
 {
     public static class Flow
     {
-        // シーン遷移(durは、この処理が発火された後に待つ秒数)
-        public static async UniTask SceneChange(string toSceneName, bool isAsync, float dur, CancellationToken ct)
+        // シーン遷移
+        public static void SceneChange(string toSceneName, bool isAsync)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(dur));
-
             // 非同期遷移
             if (isAsync)
             {
@@ -24,11 +22,9 @@ namespace General
             }
         }
 
-        // ゲーム終了(durは、この処理が発火された後に待つ秒数)
-        public static async UniTask QuitGame(float dur, CancellationToken ct)
+        // ゲーム終了
+        public static void QuitGame()
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(dur));
-
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else

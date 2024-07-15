@@ -73,7 +73,7 @@ namespace Main
                 _gameResult = Result.Clear;
 
                 // クリアの処理を発火し、ここで処理終了
-                await Clear(turn);
+                await Clear(turn, _ct);
                 return;
             }
 
@@ -86,7 +86,7 @@ namespace Main
                 _gameResult = Result.Over;
 
                 // ゲームオーバーの処理を発火し、ここで処理終了
-                await Over(height);
+                await Over(height, _ct);
                 return;
             }
 
@@ -95,7 +95,7 @@ namespace Main
         }
 
         // クリアの処理(クリア時のターン数を引数に入れること)
-        async UniTask Clear(int turnParam)
+        async UniTask Clear(int turnParam, CancellationToken ct)
         {
             // UI関連の処理(未実装)
 
@@ -104,7 +104,7 @@ namespace Main
             {
                 if (InputGetter.Instance.Main_IsSubmit)
                 {
-                    await Flow.SceneChange(SO_SceneName.Entity.Title, false, SO_Main.Entity.OnButtonClickWaitDur, _ct);
+                    Flow.SceneChange(SO_SceneName.Entity.Title, false);
                 }
 
                 await UniTask.Yield();
@@ -112,7 +112,7 @@ namespace Main
         }
 
         // ゲームオーバーの処理(ゲームオーバー時の高度を引数に入れること)
-        async UniTask Over(int heightParam)
+        async UniTask Over(int heightParam, CancellationToken ct)
         {
             // UI関連の処理(未実装)
 
@@ -121,7 +121,7 @@ namespace Main
             {
                 if (InputGetter.Instance.Main_IsSubmit)
                 {
-                    await Flow.SceneChange(SO_SceneName.Entity.Title, false, SO_Main.Entity.OnButtonClickWaitDur, _ct);
+                    Flow.SceneChange(SO_SceneName.Entity.Title, false);
                 }
 
                 await UniTask.Yield();
