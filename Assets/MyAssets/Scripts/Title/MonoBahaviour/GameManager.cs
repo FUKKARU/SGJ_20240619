@@ -7,7 +7,6 @@ using UnityEngine;
 using IA;
 using SO;
 using General;
-using Title.SO;
 
 namespace Title
 {
@@ -30,19 +29,23 @@ namespace Title
         #endregion
 
         [Header("スプライト")]
-        [Header("スタートボタン(通常/ホバー/クリック)")] public List<Sprite> StartButtonSprites = new();
-        [Header("ゲーム終了ボタン(通常/ホバー/クリック)")] public List<Sprite> QuitButtonSprites = new();
+        [Header("スタートボタン(通常/選択)")] public List<Sprite> StartButtonSprites = new();
+        [Header("ゲーム終了ボタン(通常/選択)")] public List<Sprite> QuitButtonSprites = new();
+        [Header("クレジット表示ボタン(通常/選択)")] public List<Sprite> CreditButtonSprites = new();
         [Space(25)]
         [Header("シーン内ゲームオブジェクトの参照")]
         [Header("スタートボタン")] public SpriteRenderer StartButton;
         [Header("ゲーム終了ボタン")] public SpriteRenderer QuitButton;
+        [Header("クレジット表示ボタン")] public SpriteRenderer CreditButton;
+        [Space(25)]
+        [Header("クレジットUI")] public GameObject CreditUI;
 
-        // 0ならボタンの選択なし、1ならスタートボタン、2ならゲーム終了ボタン
+        // 0ならボタンの選択なし、1ならスタートボタン、2ならゲーム終了ボタン、3ならクレジット表示ボタン
         private int _buttonSelecting = 0;
         private int buttonSelecting
         {
             get { return _buttonSelecting; }
-            set { _buttonSelecting = Mathf.Clamp(value, 0, 2); }
+            set { _buttonSelecting = Mathf.Clamp(value, 0, 3); }
         }
 
         // trueなら、一切のボタン入力を受け付けない
@@ -56,9 +59,13 @@ namespace Title
             // キャンセラレーショントークンの設定
             _ct = this.GetCancellationTokenOnDestroy();
 
+            // クレジットUIを非表示にする
+            CreditUI.SetActive(false);
+
             // ボタンに初期スプライトをセット
             StartButton.sprite = StartButtonSprites[ButtonState.Normal];
             QuitButton.sprite = QuitButtonSprites[ButtonState.Normal];
+            CreditButton.sprite = CreditButtonSprites[ButtonState.Normal];
         }
 
         private void Update()
@@ -71,7 +78,7 @@ namespace Title
                 // case : ボタンが選択されていない場合
                 if (_buttonSelecting == ButtonIndex.None)
                 {
-                    // 左右キーのどちらを押しても、スタートボタンを選択した状態にする。
+                    // 左右キーのどちらを押しても、スタートボタンを選択した状態にする
                     if (InputGetter.Instance.Main_IsLeft || InputGetter.Instance.Main_IsRight)
                     {
                         _buttonSelecting = ButtonIndex.Start;
@@ -80,8 +87,8 @@ namespace Title
                 // case : スタートボタンが押されている場合
                 else if (_buttonSelecting == ButtonIndex.Start)
                 {
-                    // 左右キーのどちらを押しても、ゲーム終了ボタンを選択した状態にする。
-                    if (InputGetter.Instance.Main_IsLeft || InputGetter.Instance.Main_IsRight)
+                    // 右キーを押すと、ゲーム終了ボタンを選択した状態にする
+                    if (InputGetter.Instance.Main_IsRight)
                     {
                         _buttonSelecting = ButtonIndex.Quit;
                     }
@@ -89,10 +96,24 @@ namespace Title
                 // case : ゲーム終了ボタンが押されている場合
                 else if (_buttonSelecting == ButtonIndex.Quit)
                 {
-                    // 左右キーのどちらを押しても、スタートボタンを選択した状態にする。
-                    if (InputGetter.Instance.Main_IsLeft || InputGetter.Instance.Main_IsRight)
+                    // 左キーを押すと、スタートボタンを選択した状態にする
+                    if (InputGetter.Instance.Main_IsLeft)
                     {
                         _buttonSelecting = ButtonIndex.Start;
+                    }
+                    // 右キーを押すと、クレジット表示ボタンを選択した状態にする
+                    else if (InputGetter.Instance.Main_IsRight)
+                    {
+                        _buttonSelecting = ButtonIndex.Credit;
+                    }
+                }
+                // case : クレジット表示ボタンが押されている場合
+                else if (_buttonSelecting == ButtonIndex.Credit)
+                {
+                    // 左キーを押すと、ゲーム終了ボタンを選択した状態にする
+                    if (InputGetter.Instance.Main_IsLeft)
+                    {
+                        _buttonSelecting = ButtonIndex.Quit;
                     }
                 }
 
@@ -105,18 +126,28 @@ namespace Title
                 {
                     StartButton.sprite = StartButtonSprites[ButtonState.Normal];
                     QuitButton.sprite = QuitButtonSprites[ButtonState.Normal];
+                    CreditButton.sprite = CreditButtonSprites[ButtonState.Normal];
                 }
                 // case : スタートボタンが選択されている場合
                 else if (buttonSelecting == ButtonIndex.Start)
                 {
-                    StartButton.sprite = StartButtonSprites[ButtonState.Hover];
+                    StartButton.sprite = StartButtonSprites[ButtonState.Select];
                     QuitButton.sprite = QuitButtonSprites[ButtonState.Normal];
+                    CreditButton.sprite = CreditButtonSprites[ButtonState.Normal];
                 }
                 // case : ゲーム終了ボタンが選択されている場合
                 else if (buttonSelecting == ButtonIndex.Quit)
                 {
                     StartButton.sprite = StartButtonSprites[ButtonState.Normal];
-                    QuitButton.sprite = QuitButtonSprites[ButtonState.Hover];
+                    QuitButton.sprite = QuitButtonSprites[ButtonState.Select];
+                    CreditButton.sprite = CreditButtonSprites[ButtonState.Normal];
+                }
+                // case : クレジット表示ボタンが選択されている場合
+                else if (buttonSelecting == ButtonIndex.Credit)
+                {
+                    StartButton.sprite = StartButtonSprites[ButtonState.Normal];
+                    QuitButton.sprite = QuitButtonSprites[ButtonState.Normal];
+                    CreditButton.sprite = CreditButtonSprites[ButtonState.Select];
                 }
                 else
                 {
@@ -141,13 +172,8 @@ namespace Title
                         // このフレームの後、一切の入力を受け付けない
                         _buttonClicked = true;
 
-                        // スプライトを更新(これ以降、ボタンのスプライトの更新は一切行われない想定)
-                        StartButton.sprite = StartButtonSprites[ButtonState.Click];
-
                         // メインシーンに遷移
-                        Flow.SceneChange(
-                            SO_SceneName.Entity.Main, false, SO_Title.Entity.OnButtonClickWaitDur, _ct
-                            ).Forget();
+                        Flow.SceneChange(SO_SceneName.Entity.Main, false);
                     }
                 }
                 // case : ゲーム終了ボタンが選択されている場合
@@ -159,13 +185,21 @@ namespace Title
                         // このフレームの後、一切の入力を受け付けない
                         _buttonClicked = true;
 
-                        // スプライトを更新(これ以降、ボタンのスプライトの更新は一切行われない想定)
-                        QuitButton.sprite = QuitButtonSprites[ButtonState.Click];
-
                         // ゲーム終了！
-                        Flow.QuitGame(
-                            SO_Title.Entity.OnButtonClickWaitDur, _ct
-                            ).Forget();
+                        Flow.QuitGame();
+                    }
+                }
+                // case : クレジット表示ボタンが選択されている場合
+                else if (buttonSelecting == ButtonIndex.Credit)
+                {
+                    // クレジット表示ボタンが選択された状態で、決定が押されたなら...
+                    if (InputGetter.Instance.Main_IsSubmit)
+                    {
+                        // このフレームの後、一切の入力を受け付けない
+                        _buttonClicked = true;
+
+                        // クレジットUIを表示する
+                        CreditUI.SetActive(true);
                     }
                 }
                 else
@@ -187,8 +221,7 @@ namespace Title
     public static class ButtonState
     {
         public static int Normal = 0;
-        public static int Hover = 1;
-        public static int Click = 2;
+        public static int Select = 1;
     }
 
     // ボタンの選択状態
@@ -197,5 +230,6 @@ namespace Title
         public static int None = 0;
         public static int Start = 1;
         public static int Quit = 2;
+        public static int Credit = 3;
     }
 }
