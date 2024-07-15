@@ -15,6 +15,8 @@ namespace Main
         [SerializeField] float putSpan;
         [Header("落ち物プレファブ")]
         [SerializeField] Item[] itemPrefab = new Item[3];
+        [Header("ゲーミング帝プレファブ")]
+        [SerializeField] Item specialPrefab;
 
         float putTimer;
         int previousID;
@@ -74,7 +76,23 @@ namespace Main
                 r = Random.Range(8, itemPrefab.Length);
             }
             
-            currentItem = Instantiate(itemPrefab[r], transform.position, Quaternion.identity);
+            if (r == 9)
+            {
+                int rMikado = Random.Range(0, 2);
+                if (rMikado == 0)
+                {
+                    currentItem = Instantiate(specialPrefab, transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    currentItem = Instantiate(itemPrefab[r], transform.position, Quaternion.identity);
+                }
+            }
+            else
+            {
+                currentItem = Instantiate(itemPrefab[r], transform.position, Quaternion.identity);
+            }
+
             currentItem.transform.SetParent(transform);
             currentItem.id = r;
             previousID = r;
