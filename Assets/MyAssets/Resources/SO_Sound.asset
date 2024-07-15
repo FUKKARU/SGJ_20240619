@@ -19,10 +19,28 @@ MonoBehaviour:
     type: 2}
   TitleBGM: {fileID: 8300000, guid: 5475a7a8b605b934dbc7b46082332b18, type: 3}
   MainBGM: {fileID: 8300000, guid: fb8446a51f5b05c44a64903bd15df4be, type: 3}
-  ArrowSE: {fileID: 8300000, guid: 3f793ef552045fa42a7dee30a8f53833, type: 3}
-  MeteoSE: {fileID: 8300000, guid: 9d4dc349a8ce84443b652074653373c4, type: 3}
-  BambooSE: {fileID: 0}
-  MikadoSE: {fileID: 0}
-  OkinaSE: {fileID: 0}
-  OhnaSE: {fileID: 0}
-  RabbitSE: {fileID: 0}
+  ArrowSE:
+  - {fileID: 8300000, guid: 3f793ef552045fa42a7dee30a8f53833, type: 3}
+  - {fileID: 8300000, guid: 18e152ab1b0d3b64d910e709ffa12317, type: 3}
+  MeteoSE:
+  - {fileID: 8300000, guid: 5b8c054cbd2ba2646b529197f4574509, type: 3}
+  - {fileID: 8300000, guid: 9d4dc349a8ce84443b652074653373c4, type: 3}
+  - {fileID: 8300000, guid: b26a90843e1080449a59c1e9960c5018, type: 3}
+  - {fileID: 8300000, guid: b6f6116268bfee745ae13982af09fb3f, type: 3}
+  BambooSE:
+  - {fileID: 8300000, guid: 7006842c4bb9a4947a4bcbe63f45a7fd, type: 3}
+  - {fileID: 8300000, guid: 712818a0366382a43b5afcfba34f29f8, type: 3}
+  MikadoSE:
+  - {fileID: 8300000, guid: c2271bf60d41028468a63d47bb723e1e, type: 3}
+  - {fileID: 8300000, guid: bfbbd683ce18f444d8a0ae974885516c, type: 3}
+  OkinaSE:
+  - {fileID: 8300000, guid: d7f08d6807ffaf548a64714c5130cbda, type: 3}
+  - {fileID: 8300000, guid: 3b2e60bd3036eed4e98c4641aeb00f3a, type: 3}
+  OhnaSE:
+  - {fileID: 8300000, guid: 146555730a18556448a1fa4da76139ad, type: 3}
+  - {fileID: 8300000, guid: 7d29ec627b1f2634085dd11643ae5d1f, type: 3}
+  RabbitSE:
+  - {fileID: 8300000, guid: ed636fc5fd4399d46adc85427c6a2e50, type: 3}
+  - {fileID: 8300000, guid: 9a415e59769a7ba4b83e96c5a54dd243, type: 3}
+  - {fileID: 8300000, guid: eb18059123dfb814399610a7e6b40676, type: 3}
+  - {fileID: 8300000, guid: a393214406809b144bbfaddf6d702b7e, type: 3}
