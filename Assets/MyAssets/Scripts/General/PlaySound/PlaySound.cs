@@ -1,6 +1,5 @@
 using SO;
 using UnityEngine;
-using static Unity.VisualScripting.Member;
 
 namespace General
 {
@@ -19,7 +18,6 @@ namespace General
                 source.playOnAwake = true;
                 source.loop = true;
                 source.Play();
-                source.volume = 0.2f;
             }
             else
             {
@@ -27,7 +25,6 @@ namespace General
                 source.playOnAwake = true;
                 source.loop = false;
                 source.PlayOneShot(clip);
-                source.volume = 0.2f;
             }
         }
     }

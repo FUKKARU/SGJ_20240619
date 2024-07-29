@@ -16,7 +16,6 @@ namespace Main
             // シーン開始時にBGMを再生
             _source = GetComponent<AudioSource>();
             _source.Raise(SO_Sound.Entity.MainBGM, SType.BGM);
-            _source.volume =0.2f;
         }
 
         private void Update()
