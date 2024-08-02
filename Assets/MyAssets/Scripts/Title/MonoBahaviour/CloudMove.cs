@@ -6,10 +6,10 @@ namespace main
 {
     public class CloudMove : MonoBehaviour
     {
-        [SerializeField] public float cloudMoveSpeed = 1.0f; //雲の移動速度
-        [Header("画面x=左,y=右の境界線")]
-        [SerializeField] public Vector2 boundaries = new Vector2(-13.0f,13.0f); //画面x=左,y=右の境界線
-        [SerializeField] public int direction = 1; //移動方向(1は右、-1左)
+        [SerializeField] private float cloudMoveSpeed = 1.0f; //雲の移動速度
+        [Header("境界線設定;x=左,y=右の境界線")]
+        [SerializeField] private Vector2 boundaries = new Vector2(-13.0f,13.0f); //画面x=左,y=右の境界線
+        [SerializeField] private int direction = 1; //移動方向(1は右、-1左)
 
         private void Start()
         {
