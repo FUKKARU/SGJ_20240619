@@ -461,14 +461,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartButtonSprites:
-  - {fileID: 21300000, guid: 371dcc77dd4b8574d8e5556505a6d8ad, type: 3}
-  - {fileID: 21300000, guid: 89cc75c775b4a9548a0a37d2bbaee602, type: 3}
+  - {fileID: 21300000, guid: a279143babfde154da30df4a64874901, type: 3}
+  - {fileID: 21300000, guid: d875fd8b5c34f494999a13600b2859dc, type: 3}
   QuitButtonSprites:
-  - {fileID: 21300000, guid: df67ed70401ac2140b00b7ace92f6dbf, type: 3}
-  - {fileID: 21300000, guid: 8cf6aa309a65ff841adc10e178dc216c, type: 3}
+  - {fileID: 21300000, guid: 21f1746a4a16250428d74eca9c80c2d9, type: 3}
+  - {fileID: 21300000, guid: 89b5b45d087f4b44cbc33ae60f416639, type: 3}
   CreditButtonSprites:
-  - {fileID: 21300000, guid: af14f53acf5aa9d4b9031a1cb3a09a7a, type: 3}
-  - {fileID: 21300000, guid: b5b9d9c6f2750b14085ce1eb6cf496c8, type: 3}
+  - {fileID: 21300000, guid: c9e3245e5abcfde40a36fa428c3a7826, type: 3}
+  - {fileID: 21300000, guid: 510d71993fbc94140bea8af2610f9f85, type: 3}
   StartButton: {fileID: 4625798419995195935}
   QuitButton: {fileID: 1703556744543286944}
   CreditButton: {fileID: 4850225898536354487}
