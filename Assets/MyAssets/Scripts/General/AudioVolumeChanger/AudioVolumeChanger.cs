@@ -8,11 +8,6 @@ namespace General
 {
     public class AudioVolumeChanger : MonoBehaviour
     {
-        private void Start()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-
         private void Update()
         {
             if (IA.InputGetter.Instance.Main_IsUp)
