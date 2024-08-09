@@ -30,6 +30,7 @@ namespace SO
         }
         #endregion
 
+        [Header("AudioMixer")] public AudioMixer AudioMixer;
         [Header("Master‚ÌAudioMixerGroup")] public AudioMixerGroup AMGroupMaster;
         [Header("BGM‚ÌAudioMixerGroup")] public AudioMixerGroup AMGroupBGM;
         [Header("SE‚ÌAudioMixerGroup")] public AudioMixerGroup AMGroupSE;

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40574fd3a6dfa3047b48dab80bc13eb5, type: 3}
   m_Name: SO_Sound
   m_EditorClassIdentifier: 
+  AudioMixer: {fileID: 24100000, guid: b5aafbe88ae40a3418e1a39967e58d03, type: 2}
   AMGroupMaster: {fileID: 24300002, guid: b5aafbe88ae40a3418e1a39967e58d03, type: 2}
   AMGroupBGM: {fileID: -5032583989990272255, guid: b5aafbe88ae40a3418e1a39967e58d03,
     type: 2}
